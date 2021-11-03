@@ -1,0 +1,104 @@
+commit eb76f575ba50e1a7370e362c9949de68fa7c1316
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 23:00:10 2021 +0200
+
+    Removed file1, renamed file2 to file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ff4b26659cb16259a573667b75e5954468799a0e
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:57:19 2021 +0200
+
+    Harjoittelua
+
+ eka.txt          | 4 ++++
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 4 files changed, 4 insertions(+)
+
+commit 4cddf583c8f9541a9e213340900d8bc1f4aa4430
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:51:58 2021 +0200
+
+    git add -p training
+
+ kolmas.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 0e2ffea12481567def2424f42223702c9f41889f
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:50:26 2021 +0200
+
+    Changed name of tiedosto.txt to eka.txt
+
+ tiedosto.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+commit 7644bd09235bc7945812a6098d91f4b6d4726323
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:49:33 2021 +0200
+
+    Removed toinen.txt
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e72c2cc35c2be07ce9cbffd05a952f14a505616e
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:48:29 2021 +0200
+
+    Some less text
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit fc56a8836ff41fd9c2f2ab428ae42c82d17f28c2
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:47:41 2021 +0200
+
+    Large amount of text
+
+ tiedosto.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit 8cf3a26006a8380b40e42cc1245187b6f70d8f20
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:38:30 2021 +0200
+
+    Some stuff
+
+ stuff/some_stuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit dec7beb1069508c2be14f220dcdf54f2a347afba
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:37:56 2021 +0200
+
+    Kolmas tiedosto
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ed0a30c6bcf1240743367ca14adbb31725a80178
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:35:16 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit d9cb4da90b41fe446803a08eefaf3487aedcc274
+Author: shiftleino <julius.leino@helsinki.fi>
+Date:   Wed Nov 3 22:32:15 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
