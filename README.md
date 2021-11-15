@@ -12,7 +12,7 @@ Project description coming here...
 [komentorivi.txt](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko1/komentorivi.txt)
 
 ### Viikko 2
-Screenshot of coverage report: [screenshot](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko2/ohte_viikko2_kattavuus.png)
+Screenshot of coverage report: [screenshot](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko2/ohte_vko2_kattavuus.png)
 
 
 
