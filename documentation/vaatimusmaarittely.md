@@ -1,4 +1,4 @@
-# Vaatimustenmäärittely
+# Vaatimusmäärittely
 
 ## Sovelluksen yleiskuva ja tarkoitus
 Sovellus on graafisella käyttöliittymällä toteutettu osakeportfolion hallinointityökalu. Sovelluksen avulla käyttäjä voi tarkastella omaa osakesalkkuaan, lisätä sinne uusia osakkeita, saada tiedon osakkeen päivän kurssista ja tutkia osakkeen historiallista käyttäytymistä havainnollisen aikasarjakuvaajan avulla. Sovellusta voi käyttää usea rekisteröitynyt käyttäjä kirjautumalla sisään omalle tililleen.
