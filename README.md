@@ -16,4 +16,4 @@ Screenshot of coverage report: [screenshot](https://github.com/shiftleino/stockP
 
 
 
-<b>DO NOT COPY</b>
+<center><b>DO NOT COPY</b></center>
