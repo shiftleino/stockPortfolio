@@ -1,2 +1,4 @@
 *cache*
 /laskarit/viikko2/unicafe/.pytest_cache
+*.coverage*
+*htmlcov*
