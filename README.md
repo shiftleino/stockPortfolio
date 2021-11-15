@@ -6,7 +6,8 @@ This repository contains the course project and exercise solutions for <I>Ohjelm
 Project description coming here...
 
 ## Documentation
-[Working hours](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)
+[Working hours](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
+[Requirements engineering document](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)
 
 ## Laskarit
 
