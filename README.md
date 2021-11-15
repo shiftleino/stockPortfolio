@@ -5,6 +5,9 @@ This repository contains the course project and exercise solutions for <I>Ohjelm
 ## Stock Portfolio
 Project description coming here...
 
+## Documentation
+[Working hours](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)
+
 ## Laskarit
 
 ### Viikko 1
