@@ -1,13 +1,13 @@
 # Ohjelmistotekniikka - Helsingin yliopisto
 
-This repository contains the course project and exercise solutions for <I>Ohjelmistotekniikka</I> course.
+Tämä repositorio sisältää <I>Ohjelmistotekniikka</I>-kurssin kurssiprojektin ja harjoitusten vastaukset.
 
 ## Stock Portfolio
-Project description coming here...
+Projektin yleiskuvaus tulossa tähän...
 
-## Documentation
-[Working hours](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
-[Requirements engineering document](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)
+## Dokumentaatio
+[Työtunnit](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
+[Vaatimusmäärittely](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)
 
 ## Laskarit
 
@@ -16,7 +16,7 @@ Project description coming here...
 [komentorivi.txt](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko1/komentorivi.txt)
 
 ### Viikko 2
-Screenshot of coverage report: [screenshot](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko2/ohte_vko2_kattavuus.png)
+Screenshot testikattavuudesta: [screenshot](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko2/ohte_vko2_kattavuus.png)
 
 
 
