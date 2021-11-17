@@ -11,4 +11,9 @@
         <td>2</td>
         <td>Vaatimustenmäärittelydokumentti</td>
     </tr>
+    <tr>
+        <td>18.11.</td>
+        <td>1</td>
+        <td>README siistiminen, poetryn ja invoke alustaminen</td>
+    </tr>
 </table>
