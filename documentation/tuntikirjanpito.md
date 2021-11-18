@@ -12,8 +12,13 @@
         <td>Vaatimustenmäärittelydokumentti</td>
     </tr>
     <tr>
-        <td>18.11.</td>
+        <td>17.11.</td>
         <td>1</td>
         <td>README siistiminen, poetryn ja invoke alustaminen</td>
+    </tr>
+    <tr>
+        <td>18.11.</td>
+        <td>3</td>
+        <td>Ensimmäisten tiedostojen tekeminen, PyQt5 dokumentaation lukeminen</td>
     </tr>
 </table>
