@@ -11,7 +11,10 @@ class StartWindow(QDialog):
     """
 
     def __init__(self, main_widget):
-        """Constructor for the Start Window class
+        """Constructor for the Start Window class.
+
+        Args:
+            main_widget (QStackedWidget): The main widget that contains all the windows.
         """
         super().__init__()
         self.main_widget = main_widget

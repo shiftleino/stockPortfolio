@@ -15,11 +15,16 @@ class SignupnWindow(QDialog):
         
         self.setLayout(self.layout)
 
+        # SET BACKGROUND FOR THE WINDOW
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet("background-color: #1F2833")
+
+
     def set_labels(self):
         """Sets headers for the Log In Window.
         """
         text = "Stock Portfolio Manager"
-        subtext = "Welcome to the Stock Portfolio Manager."
+        subtext = "Create a new account."
         header = QLabel(text)
         subheader = QLabel(subtext)
 
