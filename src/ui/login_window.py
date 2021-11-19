@@ -70,6 +70,7 @@ class LoginWindow(QDialog):
         password_field.setPlaceholderText("Enter password")
         password_field.setFixedSize(300, 50)
         password_field.setStyleSheet("background-color: white; color: black; font: Georgia; font-size: 18px")
+        password_field.setEchoMode(QLineEdit.EchoMode.Password)
         pwform_layout = QHBoxLayout()
         pwform_layout.addStretch()
         pwform_layout.addWidget(password_field)
@@ -99,7 +100,7 @@ class LoginWindow(QDialog):
         Returns:
             QPushButton: The No Account button.
         """
-        login_btn = QPushButton("No Account Yet? Sign up.")
+        login_btn = QPushButton("No account yet? Sign up.")
         login_layout = QHBoxLayout()
         login_layout.addStretch(1)
         login_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")

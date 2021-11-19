@@ -82,7 +82,6 @@ class StartWindow(QDialog):
         """
         self.main_widget.setCurrentIndex(1)
         
-    
     def change_signup(self):
         """Changes the window to the Sign Up Window
         """
