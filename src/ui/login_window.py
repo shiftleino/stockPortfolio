@@ -127,6 +127,11 @@ class LoginWindow(QDialog):
         self.main_widget.setCurrentIndex(2)
 
     def error_label(self):
+        """Creates the error text label for invalid username and/or password.
+
+        Returns:
+            QLabel: Error text.
+        """
         label = QLabel("")
         label.setStyleSheet("color: red; font: Georgia; font-weight: bold; font-size: 18px")
         label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
