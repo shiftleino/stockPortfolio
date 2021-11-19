@@ -30,7 +30,7 @@ class LoginWindow(QDialog):
         self.error = self.error_label()
         self.login_btn = self.create_login_btn()
         self.layout.addStretch(1)
-        self.no_account_btn = self.create_no_acocunt_btn()
+        self.no_account_btn = self.create_no_account_btn()
         self.layout.addStretch(10)
         self.setLayout(self.layout)
 
@@ -105,21 +105,21 @@ class LoginWindow(QDialog):
         self.layout.addLayout(login_layout)
         return login_btn
 
-    def create_no_acocunt_btn(self):
+    def create_no_account_btn(self):
         """Creates a button to sign up window if the user does not have an account.
 
         Returns:
             QPushButton: The No Account button.
         """
-        login_btn = QPushButton("No account yet? Sign up.")
-        login_layout = QHBoxLayout()
-        login_layout.addStretch(1)
-        login_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        login_btn.setFixedSize(300, 50)
-        login_layout.addWidget(login_btn)
-        login_layout.addStretch(1)
-        self.layout.addLayout(login_layout)
-        return login_btn
+        signup_btn = QPushButton("No account yet? Sign up.")
+        signup_layout = QHBoxLayout()
+        signup_layout.addStretch(1)
+        signup_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        signup_btn.setFixedSize(300, 50)
+        signup_layout.addWidget(signup_btn)
+        signup_layout.addStretch(1)
+        self.layout.addLayout(signup_layout)
+        return signup_btn
 
     def change_to_signup(self):
         """Switches the window to the sign up window.
@@ -153,6 +153,9 @@ class LoginWindow(QDialog):
                 # SHOW THE PORTFOLIO WINDOW
                 portfolio = PortfolioWindow(self.main_widget, self.__user_repo, self.__user)
                 self.main_widget.addWidget(portfolio)
+                self.error.setText("")
                 self.main_widget.setCurrentIndex(3)
+            else:
+                self.error.setText("Account does not exist or incorrect password")
         else:
             self.error.setText("Please give valid username and password")

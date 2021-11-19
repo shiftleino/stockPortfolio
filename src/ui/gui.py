@@ -18,7 +18,7 @@ def start_gui(user_repo, user):
     login_window = LoginWindow(main_widget, user_repo, user)
     main_widget.addWidget(login_window)
 
-    signup_window = SignupWindow(main_widget)
+    signup_window = SignupWindow(main_widget, user_repo)
     main_widget.addWidget(signup_window)
 
     # WINDOW SETTINGS
