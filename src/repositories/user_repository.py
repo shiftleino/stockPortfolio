@@ -39,4 +39,5 @@ class UserRepository:
         Returns:
             integer: Id matching the given username.
         """
+        id = 1
         return id

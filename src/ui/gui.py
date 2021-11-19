@@ -6,18 +6,10 @@ from PyQt5.QtGui import QIcon
 from start_window import StartWindow
 from login_window import LoginWindow
 from signup_window import SignupWindow
-from portfolio_window import PortfolioWindow
-sys.path.clear()
-sys.path.append("src")
-from repositories.user_repository import UserRepository
-from database import db_connection
-from entities.user import User
 
-def start_gui():
+
+def start_gui(user_repo, user):
     app = QApplication(sys.argv)
-    connection = db_connection.get_connection()
-    user_repo = UserRepository(connection)
-    user = User()
     main_widget = QStackedWidget()
     
     start_window = StartWindow(main_widget)
