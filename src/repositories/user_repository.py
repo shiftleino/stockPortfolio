@@ -11,7 +11,11 @@ class UserRepository:
         Returns:
             boolean: Exists or does not.
         """
+        cursor = self.__connection.cursor()
         sql = "SELECT username FROM users WHERE username=$1"
+        cursor.execute(sql, username)
+        rows = cursor.fetchall()
+
         return True
     
     def correct_password(self, username, password):
