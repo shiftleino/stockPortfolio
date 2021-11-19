@@ -21,4 +21,9 @@
         <td>3</td>
         <td>Ensimmäisten tiedostojen tekeminen, PyQt5 dokumentaation lukeminen</td>
     </tr>
+    <tr>
+        <td>19.11.</td>
+        <td>11</td>
+        <td>Kirjautumis- ja rekisteröitymistoiminnot</td>
+    </tr>
 </table>
