@@ -1,5 +1,9 @@
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout
+import sys
+sys.path.append("src/gui")
+from portfolio_window import PortfolioWindow
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QMessageBox
 from PyQt5.QtCore import Qt
+
 
 class LoginWindow(QDialog):
     """Class for the window where the user can login in the application.
@@ -7,24 +11,31 @@ class LoginWindow(QDialog):
     Args:
         QDialog: Inherits QDialog
     """
-    def __init__(self, main_widget):
+    def __init__(self, main_widget, user_repo, user):
         """Constructor for the Login Window class.
 
         Args:
             main_widget (QStackedWidget): The main widget that contains all the windows.
+            user_repo (UserRepository): The UserRepository class for communicating with the database.
+            user (User): User class for the user.
         """
         super().__init__()
+        self.__user_repo = user_repo
+        self.__user = user
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
         self.set_labels()
         self.layout.addStretch(1)
         self.user_name_field, self.password_field = self.create_login_form()
+        self.error = self.error_label()
         self.login_btn = self.create_login_btn()
         self.layout.addStretch(1)
         self.no_account_btn = self.create_no_acocunt_btn()
         self.layout.addStretch(10)
         self.setLayout(self.layout)
 
+        # FUNCTIONALITY OF THE BUTTONS
+        self.login_btn.clicked.connect(self.login)
         self.no_account_btn.clicked.connect(self.change_to_signup)
 
         # SET BACKGROUND FOR THE WINDOW
@@ -114,3 +125,29 @@ class LoginWindow(QDialog):
         """Switches the window to the sign up window.
         """
         self.main_widget.setCurrentIndex(2)
+
+    def error_label(self):
+        label = QLabel("")
+        label.setStyleSheet("color: red; font: Georgia; font-weight: bold; font-size: 18px")
+        label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.layout.addWidget(label)
+        return label
+
+    def login(self):
+        """Checks if the user credentials are ok and then logs in.
+        """
+        username = self.user_name_field.text()
+        password = self.password_field.text()
+        if len(username) > 0 and len(password) > 0:
+            if self.__user_repo.check_username_exists(username) and self.__user_repo.correct_password(username, password):
+                id = self.__user_repo.get_user_id(username)
+                self.__user.set_username(username)
+                self.__user.set_password(password)
+                self.__user.set_id(id)
+                
+                # SHOW THE PORTFOLIO WINDOW
+                portfolio = PortfolioWindow(self.main_widget, self.__user_repo, self.__user)
+                self.main_widget.addWidget(portfolio)
+                self.main_widget.setCurrentIndex(3)
+        else:
+            self.error.setText("Please give valid username and password")

@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel
 from PyQt5.QtCore import Qt
 
-class SignupnWindow(QDialog):
+class SignupWindow(QDialog):
     """Class for the window where the user can sign up as a new user.
 
     Args:
