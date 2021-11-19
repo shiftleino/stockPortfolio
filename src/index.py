@@ -1,12 +1,7 @@
-import sys
-from PyQt5.QtWidgets import QApplication
-from gui.mainwindow import MainWindow
+from ui import gui
 
 def main():
-    app = QApplication(sys.argv)
-    gui = MainWindow()
-    gui.show()
-    sys.exit(app.exec_())
+    gui.start_gui()
 
 if __name__ == "__main__":
     main()
