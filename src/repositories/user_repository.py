@@ -80,5 +80,4 @@ class UserRepository:
             self.__connection.commit()
             return True
         except Exception:
-            print()
             return False
