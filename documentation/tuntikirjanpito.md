@@ -26,4 +26,9 @@
         <td>11</td>
         <td>Kirjautumis- ja rekisteröitymistoiminnot</td>
     </tr>
+    <tr>
+        <td>22.11.</td>
+        <td>1</td>
+        <td>Testiluokka ja testit User-luokalle</td>
+    </tr>
 </table>

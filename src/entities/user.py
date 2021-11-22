@@ -29,6 +29,14 @@ class User:
         """
         return self.__username
 
+    def return_password(self):
+        """Returns user's password
+
+        Returns:
+            string: Password.
+        """
+        return self.__password
+
     def set_username(self, username):
         """Sets the username of the User object to given username.
 
