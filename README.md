@@ -11,15 +11,29 @@ Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä 
 [Työtunnit](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
 [Vaatimusmäärittely](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)
 
-## Laskarit
+## Python-versio
+Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on haittaa, vanhempien versioiden kanssa saattaa tulla ongelmia.
 
-### Viikko 1
-[gitlog.txt](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko1/gitlog.txt)<br>
-[komentorivi.txt](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko1/komentorivi.txt)
+## Käynnistys
+1. Asenna riippuvuudet
+```console 
+poetry install
+```
 
-### Viikko 2
-Screenshot testikattavuudesta: [screenshot](https://github.com/shiftleino/stockPortfolio/blob/main/laskarit/viikko2/ohte_vko2_kattavuus.png)
+2. Käynnistä sovellus
+```console
+poetry run invoke start
+```
 
+## Testaus
+1. Suorita testit
+```console
+poetry run invoke test
+```
 
+2. Testikattavuusraportti
+```console
+poetry run invoke coverage-report
+```
 
 <p align="center"><b>DO NOT COPY</b></p>
