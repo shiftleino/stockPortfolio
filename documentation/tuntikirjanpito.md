@@ -31,4 +31,14 @@
         <td>1</td>
         <td>Testiluokka ja testit User-luokalle</td>
     </tr>
+    <tr>
+        <td>24.11.</td>
+        <td>3</td>
+        <td>Tietokanta toiminto portfolio-sivulle</td>
+    </tr>
+    <tr>
+        <td><b>Yhteensä</b></td>
+        <td><b>21</b></td>
+        <td></td>
+    </tr>
 </table>
