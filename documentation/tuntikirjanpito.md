@@ -34,7 +34,7 @@
     <tr>
         <td>24.11.</td>
         <td>3</td>
-        <td>Tietokanta toiminto portfolio-sivulle</td>
+        <td>Tietokantatoiminto portfolio-sivulle</td>
     </tr>
     <tr>
         <td><b>Yhteensä</b></td>
