@@ -81,3 +81,6 @@ class UserRepository:
             return True
         except Exception:
             return False
+    
+    def return_conn(self):
+        return self.__connection
