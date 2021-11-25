@@ -25,16 +25,16 @@ class UserRepository:
         rows = cursor.fetchall()
         if len(rows) > 0:
             return True
-        else: 
+        else:
             return False
-    
+
     def correct_password(self, username, password):
         """Checks if the given username matches the given password.
 
         Args:
             username (string): Given usernname.
             password (string): Given password.
-        
+
         Returns:
             boolean: True or False
         """
@@ -43,7 +43,7 @@ class UserRepository:
         cursor.execute(sql, (username,))
         self.__connection.commit()
         pw = cursor.fetchone()[0]
-        if password==pw:
+        if password == pw:
             return True
         else:
             return False
@@ -81,6 +81,6 @@ class UserRepository:
             return True
         except Exception:
             return False
-    
+
     def return_conn(self):
         return self.__connection

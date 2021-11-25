@@ -1,6 +1,7 @@
+from stock_repository import StockRepository
 import sys
 sys.path.append("src/repositories")
-from stock_repository import StockRepository
+
 
 class StockService:
     def __init__(self, user_id, conn):
@@ -12,11 +13,10 @@ class StockService:
         data, success = self.__repo.get_user_data()
         if success:
             return data
-        else:
-            return ["N/A", "N/A", "N/A", "N/A", "N/A"]
+        return ["N/A", "N/A", "N/A", "N/A", "N/A"]
 
     def add_stock(self, name, ticker, amount, buy_price):
-        data = (self.__user_id, name, ticker, amount, buy_price)    
+        data = (self.__user_id, name, ticker, amount, buy_price)
         success = self.__repo.add_stock(data)
         return success
 

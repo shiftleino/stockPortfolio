@@ -12,7 +12,7 @@ class StockRepository:
         price real);"""
         self.__cursor.execute(sql)
         self.__connection.commit()
-    
+
     def get_user_data(self):
         try:
             sql = "SELECT * FROM stocks WHERE user_id=?;"
@@ -22,7 +22,7 @@ class StockRepository:
             return data, True
         except:
             return [], False
-    
+
     def add_stock(self, data):
         try:
             sql = "INSERT INTO stocks (user_id, name, ticker, amount, price) VALUES (?,?,?,?,?);"

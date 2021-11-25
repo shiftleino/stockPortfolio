@@ -1,5 +1,3 @@
-import sys
-sys.path.append("src/database")
 import db_connection as db
 
 def drop_tables(conn):
@@ -7,6 +5,7 @@ def drop_tables(conn):
     sql = "DROP TABLES IF EXISTS users"
     cursor.execute(sql)
     conn.commit()
+
 
 def create_tables(conn):
     cursor = conn.cursor()
@@ -17,10 +16,12 @@ def create_tables(conn):
     cursor.execute(sql)
     conn.commit()
 
+
 def initialize_db():
     conn = db.get_connection()
     drop_tables(conn)
     create_tables(conn)
+
 
 if __name__ == "__main__":
     initialize_db()

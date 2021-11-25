@@ -1,8 +1,8 @@
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
 import sys
 sys.path.append("src/ui/")
 
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
-from PyQt5.QtCore import Qt
 
 class StartWindow(QDialog):
     """Class that provides Start Window functionality.
@@ -43,8 +43,10 @@ class StartWindow(QDialog):
         header = QLabel(text)
         subheader = QLabel(subtext)
 
-        header.setStyleSheet("color: #66FCF1; font-weight: bold; font-size: 80px")
-        subheader.setStyleSheet("color: white; font-weight: bold; font: Georgia; font-size: 40px")
+        header.setStyleSheet(
+            "color: #66FCF1; font-weight: bold; font-size: 80px")
+        subheader.setStyleSheet(
+            "color: white; font-weight: bold; font: Georgia; font-size: 40px")
 
         header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         subheader.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -57,20 +59,22 @@ class StartWindow(QDialog):
         login_btn = QPushButton("Log in")
         login_layout = QHBoxLayout()
         login_layout.addStretch(1)
-        login_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        login_btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
         login_btn.setFixedSize(300, 50)
         login_layout.addWidget(login_btn)
         login_layout.addStretch(1)
         self.layout.addLayout(login_layout)
         return login_btn
-    
+
     def create_signup_btn(self):
         """Creates a button for the user to sign up as a new user.
         """
         signup_btn = QPushButton("Sign up")
         signup_layout = QHBoxLayout()
         signup_layout.addStretch(1)
-        signup_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        signup_btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
         signup_btn.setFixedSize(300, 50)
         signup_layout.addWidget(signup_btn)
         signup_layout.addStretch(1)
@@ -81,7 +85,7 @@ class StartWindow(QDialog):
         """Changes the window to the Login Window.
         """
         self.main_widget.setCurrentIndex(1)
-        
+
     def change_signup(self):
         """Changes the window to the Sign Up Window
         """

@@ -1,7 +1,7 @@
+import unittest
+from user import User
 import sys
 sys.path.append("src/entities")
-from user import User
-import unittest
 
 
 class TestUser(unittest.TestCase):
@@ -11,11 +11,11 @@ class TestUser(unittest.TestCase):
     def test_return_id(self):
         id = self.user.return_id()
         self.assertEqual(id, 1)
-    
+
     def test_return_username(self):
         username = self.user.return_username()
         self.assertEqual(username, "username1234")
-    
+
     def test_return_password(self):
         pw = self.user.return_password()
         self.assertEqual(pw, "1234")

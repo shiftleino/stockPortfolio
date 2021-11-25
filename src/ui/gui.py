@@ -1,17 +1,16 @@
+from signup_window import SignupWindow
+from login_window import LoginWindow
+from start_window import StartWindow
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, QStackedWidget
 import sys
 sys.path.append("src/ui/")
-
-from PyQt5.QtWidgets import QApplication, QStackedWidget
-from PyQt5.QtGui import QIcon
-from start_window import StartWindow
-from login_window import LoginWindow
-from signup_window import SignupWindow
 
 
 def start_gui(user_repo, user):
     app = QApplication(sys.argv)
     main_widget = QStackedWidget()
-    
+
     start_window = StartWindow(main_widget)
     main_widget.addWidget(start_window)
 

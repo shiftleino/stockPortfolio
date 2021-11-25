@@ -8,13 +8,14 @@ class SignupWindow(QDialog):
     Args:
         QDialog: Inherits QDialog
     """
+
     def __init__(self, main_widget, repo):
         super().__init__()
         self.__user_repo = repo
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
         self.set_labels()
-        
+
         self.layout.addStretch(1)
         self.user_name_field, self.password_field = self.create_signup_form()
         self.error = self.error_label()
@@ -39,15 +40,17 @@ class SignupWindow(QDialog):
         header = QLabel(text)
         subheader = QLabel(subtext)
 
-        header.setStyleSheet("color: #66FCF1; font-weight: bold; font-size: 80px")
-        subheader.setStyleSheet("color: white; font-weight: bold; font: Georgia; font-size: 40px")
+        header.setStyleSheet(
+            "color: #66FCF1; font-weight: bold; font-size: 80px")
+        subheader.setStyleSheet(
+            "color: white; font-weight: bold; font: Georgia; font-size: 40px")
 
         header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         subheader.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.layout.addWidget(header)
         self.layout.addStretch(10)
         self.layout.addWidget(subheader)
-    
+
     def create_signup_form(self):
         """Creates the form for signup.
 
@@ -58,7 +61,8 @@ class SignupWindow(QDialog):
         username_field = QLineEdit()
         username_field.setPlaceholderText("Enter username")
         username_field.setFixedSize(300, 50)
-        username_field.setStyleSheet("background-color: white; color: black; font: Georgia; font-size: 18px")
+        username_field.setStyleSheet(
+            "background-color: white; color: black; font: Georgia; font-size: 18px")
         userform_layout = QHBoxLayout()
         userform_layout.addStretch()
         userform_layout.addWidget(username_field)
@@ -69,7 +73,8 @@ class SignupWindow(QDialog):
         password_field = QLineEdit()
         password_field.setPlaceholderText("Enter password")
         password_field.setFixedSize(300, 50)
-        password_field.setStyleSheet("background-color: white; color: black; font: Georgia; font-size: 18px")
+        password_field.setStyleSheet(
+            "background-color: white; color: black; font: Georgia; font-size: 18px")
         password_field.setEchoMode(QLineEdit.EchoMode.Password)
         pwform_layout = QHBoxLayout()
         pwform_layout.addStretch()
@@ -87,7 +92,8 @@ class SignupWindow(QDialog):
         signup_btn = QPushButton("Sign up")
         signup_layout = QHBoxLayout()
         signup_layout.addStretch(1)
-        signup_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        signup_btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
         signup_btn.setFixedSize(300, 50)
         signup_layout.addWidget(signup_btn)
         signup_layout.addStretch(1)
@@ -103,7 +109,8 @@ class SignupWindow(QDialog):
         login_btn = QPushButton("Already an account? Log in.")
         login_layout = QHBoxLayout()
         login_layout.addStretch(1)
-        login_btn.setStyleSheet("QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        login_btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
         login_btn.setFixedSize(300, 50)
         login_layout.addWidget(login_btn)
         login_layout.addStretch(1)
@@ -124,7 +131,8 @@ class SignupWindow(QDialog):
             QLabel: Error text.
         """
         label = QLabel("")
-        label.setStyleSheet("color: red; font: Georgia; font-weight: bold; font-size: 18px")
+        label.setStyleSheet(
+            "color: red; font: Georgia; font-weight: bold; font-size: 18px")
         label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.layout.addWidget(label)
         return label
@@ -142,6 +150,7 @@ class SignupWindow(QDialog):
                 # SHOW THE Login WINDOW
                 self.main_widget.setCurrentIndex(1)
             else:
-                self.error.setText("Something went wrong. Try again with different username")
+                self.error.setText(
+                    "Something went wrong. Try again with different username")
         else:
             self.error.setText("Please give valid username and password")

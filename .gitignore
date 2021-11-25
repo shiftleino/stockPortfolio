@@ -1,6 +1,6 @@
 *cache*
 /laskarit/viikko2/unicafe/.pytest_cache
-*.coverage*
+*.coverage
 *htmlcov*
 
 # Data files
