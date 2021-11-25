@@ -13,11 +13,12 @@ class StockService:
         if success:
             return data
         else:
-            return []
+            return ["N/A", "N/A", "N/A", "N/A", "N/A"]
 
-    def add_stock(self, data):
-        if len(data) == 5:    
-            success = self.__repo.add_stock(data)
-            return success
-        else:
-            return False
+    def add_stock(self, name, ticker, amount, buy_price):
+        data = (self.__user_id, name, ticker, amount, buy_price)    
+        success = self.__repo.add_stock(data)
+        return success
+
+    def get_stock_price(self, ticker):
+        return 0

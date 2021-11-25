@@ -16,7 +16,7 @@ class StockRepository:
     def get_user_data(self):
         try:
             sql = "SELECT * FROM stocks WHERE user_id=?;"
-            self.__cursor.execute(sql, (self.__user_id,))
+            self.__cursor.execute(sql, (self.user_id,))
             self.__connection.commit()
             data = self.__cursor.fetchall()
             return data, True
