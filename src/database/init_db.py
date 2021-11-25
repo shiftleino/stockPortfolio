@@ -1,8 +1,8 @@
-import db_connection as db
+from . import db_connection as db
 
 def drop_tables(conn):
     cursor = conn.cursor()
-    sql = "DROP TABLES IF EXISTS users"
+    sql = "DROP TABLE IF EXISTS users"
     cursor.execute(sql)
     conn.commit()
 

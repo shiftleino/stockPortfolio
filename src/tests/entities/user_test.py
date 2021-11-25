@@ -1,7 +1,5 @@
 import unittest
-from user import User
-import sys
-sys.path.append("src/entities")
+from entities.user import User
 
 
 class TestUser(unittest.TestCase):

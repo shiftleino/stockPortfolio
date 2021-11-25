@@ -37,8 +37,13 @@
         <td>Tietokantatoiminto portfolio-sivulle</td>
     </tr>
     <tr>
+        <td>25.11.</td>
+        <td>8</td>
+        <td>Portfolio-sivun toiminta ja testausta/tyylitarkastusta</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>21</b></td>
+        <td><b>29</b></td>
         <td></td>
     </tr>
 </table>
