@@ -4,6 +4,7 @@ sys.path.append("src/services")
 from stock_service import StockService
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QTableWidget, QTableWidgetItem, QInputDialog, QMessageBox
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont, QColor
 
 class PortfolioWindow(QDialog):
     """Window for the Stock Portfolio of the logged in User.
@@ -72,19 +73,44 @@ class PortfolioWindow(QDialog):
     def set_table(self):
         data = self.__stock_service.return_user_data()
         table = QTableWidget()
+        table.setMinimumWidth(1000)
+        table.setMinimumHeight(600)
         table.setRowCount(len(data))
-        table.setColumnCount(2) # NUMBER OF COLUMNS HARD CODED, CHANGE IF INFORMATION ADDED
-
+        table.setColumnCount(5)
+        table.setFrameStyle(0)
+        table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        for i in range(0,6):
+            table.setColumnWidth(i, 200)
+        table.horizontalHeader().setStyleSheet("background-color: #1F2833; color: #1F2833")
+        self.set_table_headers(table)
+        table.setShowGrid(False)
         i = 0
         for stock in data:
             item = QTableWidgetItem(stock[2])
             current = self.get_current_price(stock[3])
+            return_per = ((current - stock[5]) / stock[5]) * 100
             item2 = QTableWidgetItem(str(current))
-            table.setItem(i, 0, item)
-            table.setItem(i, 1, item2)
+            item3 = QTableWidgetItem(str(stock[5]))
+            item4 = QTableWidgetItem(str(stock[4]))
+            item5 = QTableWidgetItem(str(return_per) + " %")
+            for j, item in enumerate([item, item2, item3, item4, item5]):
+                item.setBackground(QColor("white"))
+                item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                table.setItem(i, j, item)
             i += 1
         
         self.layout.addWidget(table)
+
+    def set_table_headers(self, table):
+        labels = ["Stock", "Current price", "Purchase price", "Amount", "Return-%"]
+        font = QFont()
+        font.setBold(True)
+        font.setPointSize(14)
+        for i, label in enumerate(labels):
+            item = QTableWidgetItem(label)
+            item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            item.setFont(font)
+            table.setHorizontalHeaderItem(i, item)
 
     def create_add_stock_btn(self):
         btn = QPushButton("Add stock")
