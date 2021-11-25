@@ -22,3 +22,7 @@ class StockService:
 
     def get_stock_price(self, ticker):
         return 0
+
+    def remove_stock(self, ticker):
+        success = self.__repo.remove_stock(ticker)
+        return success

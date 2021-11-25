@@ -31,3 +31,12 @@ class StockRepository:
             return True
         except:
             return False
+
+    def remove_stock(self, ticker):
+        try:
+            sql = "DELETE FROM stocks WHERE user_id=? AND ticker=?;"
+            self.__cursor.execute(sql, (self.user_id, ticker))
+            self.__connection.commit()
+            return True
+        except:
+            return False

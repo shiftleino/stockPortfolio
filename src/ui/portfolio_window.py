@@ -29,7 +29,8 @@ class PortfolioWindow(QDialog):
         self.set_labels()
         self.layout.addStretch()
         
-        self.set_table()
+        self.table = self.set_table()
+        self.populate_table()
 
         self.add_btn = self.create_add_stock_btn()
         self.rm_btn = self.create_remove_stock_btn()
@@ -39,6 +40,8 @@ class PortfolioWindow(QDialog):
         self.setLayout(self.layout)
 
         self.add_btn.clicked.connect(self.add_stock)
+        self.rf_btn.clicked.connect(self.populate_table)
+        self.rm_btn.clicked.connect(self.remove_stock)
 
         # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
@@ -71,11 +74,9 @@ class PortfolioWindow(QDialog):
         return logout
 
     def set_table(self):
-        data = self.__stock_service.return_user_data()
         table = QTableWidget()
         table.setMinimumWidth(1000)
         table.setMinimumHeight(600)
-        table.setRowCount(len(data))
         table.setColumnCount(5)
         table.setFrameStyle(0)
         table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
@@ -84,6 +85,12 @@ class PortfolioWindow(QDialog):
         table.horizontalHeader().setStyleSheet("background-color: #1F2833; color: #1F2833")
         self.set_table_headers(table)
         table.setShowGrid(False)
+        self.layout.addWidget(table)
+        return table
+        
+    def populate_table(self):
+        data = self.__stock_service.return_user_data()
+        self.table.setRowCount(len(data))
         i = 0
         for stock in data:
             item = QTableWidgetItem(stock[2])
@@ -96,10 +103,8 @@ class PortfolioWindow(QDialog):
             for j, item in enumerate([item, item2, item3, item4, item5]):
                 item.setBackground(QColor("white"))
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
-                table.setItem(i, j, item)
+                self.table.setItem(i, j, item)
             i += 1
-        
-        self.layout.addWidget(table)
 
     def set_table_headers(self, table):
         labels = ["Stock", "Current price", "Purchase price", "Amount", "Return-%"]
@@ -145,7 +150,6 @@ class PortfolioWindow(QDialog):
     def add_stock(self):
         user_form = QInputDialog()
         user_form.setStyleSheet("font-size: 18px")
-        user_form.setMinimumWidth(800)
         name, ok1 = QInputDialog.getText(user_form, "Add new stock", "Enter the name of the stock:")
         if ok1 and len(name) != 0:
             ticker, ok2 = QInputDialog.getText(user_form, "Add new stock", "Enter the ticker of the stock:")
@@ -166,11 +170,21 @@ class PortfolioWindow(QDialog):
         else:
             self.warning_input()
 
+    def remove_stock(self):
+        user_form = QInputDialog()
+        user_form.setStyleSheet("font-size: 18px")
+        ticker, ok = QInputDialog.getText(user_form, "Remove a stock", "Enter the ticker of the stock you want to remove:")
+        if ok:
+            success = self.__stock_service.remove_stock(ticker)
+            if not success:
+                self.warning_remove()
+        else:
+            self.warning_input()
 
     def warning_input(self):
         box = QMessageBox()
         box.setWindowTitle("InputError")
-        box.setText("Something went wrong when adding the stock!\nCheck that you provide sensible input to all fields.")
+        box.setText("Something went wrong!\nCheck that you provide sensible input to all fields.")
         box.setIcon(QMessageBox.Critical)
         box.exec_()
 
@@ -178,5 +192,12 @@ class PortfolioWindow(QDialog):
         box = QMessageBox()
         box.setWindowTitle("StockError")
         box.setText("Something went wrong when adding the stock!\nCheck that you don't already have the stock in your portfolio.")
+        box.setIcon(QMessageBox.Critical)
+        box.exec_()
+
+    def warning_remove(self):
+        box = QMessageBox()
+        box.setWindowTitle("StockError")
+        box.setText("Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
         box.setIcon(QMessageBox.Critical)
         box.exec_()
