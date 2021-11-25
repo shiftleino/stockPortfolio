@@ -1,5 +1,4 @@
 import sys
-from entities import user
 sys.path.append("src/services")
 from stock_service import StockService
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QTableWidget, QTableWidgetItem, QInputDialog, QMessageBox
@@ -42,6 +41,7 @@ class PortfolioWindow(QDialog):
         self.add_btn.clicked.connect(self.add_stock)
         self.rf_btn.clicked.connect(self.populate_table)
         self.rm_btn.clicked.connect(self.remove_stock)
+        self.logout_btn.clicked.connect(self.logout)
 
         # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
@@ -201,3 +201,10 @@ class PortfolioWindow(QDialog):
         box.setText("Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
         box.setIcon(QMessageBox.Critical)
         box.exec_()
+    
+    def logout(self):
+        self.__user.set_username(None)
+        self.__user.set_id(None)
+        self.__user.set_password(None)
+        self.main_widget.setCurrentIndex(0)
+        self.main_widget.removeWidget(self)

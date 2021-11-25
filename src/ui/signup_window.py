@@ -113,6 +113,8 @@ class SignupWindow(QDialog):
     def change_to_login(self):
         """Switches the window to the login window.
         """
+        self.user_name_field.clear()
+        self.password_field.clear()
         self.main_widget.setCurrentIndex(1)
 
     def error_label(self):
@@ -135,7 +137,8 @@ class SignupWindow(QDialog):
         if len(username) > 0 and len(password) > 0:
             successful = self.__user_repo.add_user(username, password)
             if successful:
-
+                self.user_name_field.clear()
+                self.password_field.clear()
                 # SHOW THE Login WINDOW
                 self.main_widget.setCurrentIndex(1)
             else:

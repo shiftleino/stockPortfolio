@@ -124,6 +124,8 @@ class LoginWindow(QDialog):
     def change_to_signup(self):
         """Switches the window to the sign up window.
         """
+        self.user_name_field.clear()
+        self.password_field.clear()
         self.main_widget.setCurrentIndex(2)
 
     def error_label(self):
@@ -149,7 +151,8 @@ class LoginWindow(QDialog):
                 self.__user.set_username(username)
                 self.__user.set_password(password)
                 self.__user.set_id(id)
-                
+                self.user_name_field.clear()
+                self.password_field.clear()
                 # SHOW THE PORTFOLIO WINDOW
                 portfolio = PortfolioWindow(self.main_widget, self.__user_repo, self.__user)
                 self.main_widget.addWidget(portfolio)
