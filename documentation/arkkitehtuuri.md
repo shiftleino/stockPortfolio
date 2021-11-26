@@ -1,4 +1,4 @@
 # Arkkitehtuurikuvaus
 
 ## Luokkakaavio
-![Class diagram](images/luokkakaavio.png)
+![Class diagram](../images/luokkakaavio.png)
