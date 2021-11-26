@@ -1,5 +1,4 @@
 # Arkkitehtuurikuvaus
 
 ## Luokkakaavio
-
-![luokkakaavio](https://github.com/shiftleino/stockPortfolio/tree/main/images/luokkakaavio.png)
+<img src=https://github.com/shiftleino/stockPortfolio/tree/main/images/luokkakaavio.png alt="Class diagram">
