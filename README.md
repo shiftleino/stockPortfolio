@@ -37,4 +37,9 @@ poetry run invoke test
 poetry run invoke coverage-report
 ```
 
+3. Testaa tyyli
+```console
+poetry run invoke lint
+```
+
 <p align="center"><b>DO NOT COPY</b></p>
