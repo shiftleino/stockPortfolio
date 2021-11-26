@@ -42,8 +42,13 @@
         <td>Portfolio-sivun toiminta ja testausta/tyylitarkastusta</td>
     </tr>
     <tr>
+        <td>26.11.</td>
+        <td>1</td>
+        <td>Luokkakaavio</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>29</b></td>
+        <td><b>30</b></td>
         <td></td>
     </tr>
 </table>
