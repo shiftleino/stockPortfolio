@@ -9,7 +9,7 @@ Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä 
 
 ## Dokumentaatio
 [Työtunnit](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
-[Vaatimusmäärittely](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)</br>
 [Arkkitehtuurikuvaus](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/arkkitehtuuri.md)
 
 ## Python-versio
