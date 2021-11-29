@@ -16,7 +16,7 @@ Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä 
 Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on haittaa, vanhempien versioiden kanssa saattaa tulla ongelmia.
 
 ## Huomautuksia toiminnasta
-- Lisätessä osakkeen tai muuttaessa taulukon tietoja täytyy taulukko päivittää "refresh"-napista
+- Lisätessä osakkeen tai muuttaessa taulukon tietoja täytyy taulukko päivittää "refresh"-napista.
 
 ## Käynnistys
 1. Asenna riippuvuudet
