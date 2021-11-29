@@ -15,7 +15,7 @@ Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä 
 ## Python-versio
 Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on haittaa, vanhempien versioiden kanssa saattaa tulla ongelmia.
 
-## Toiminta
+## Huomautuksia toiminnasta
 - Lisätessä osakkeen tai muuttaessa taulukon tietoja täytyy taulukko päivittää "refresh"-napista
 
 ## Käynnistys
