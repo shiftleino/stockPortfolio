@@ -9,16 +9,16 @@ Sovelluksella on ainoastaan yksi käyttäjärooli, normaali käyttäjä. Pääk�
 ## Suunnitellut toiminnallisuudet
 
 ### Perusversio
-- Käyttäjä voi rekisteröityä käyttäjäksi ja siten luoda tilin - tehty
-- Käyttäjä voi kirjautua sisään sovellukseen - tehty
-- Käyttäjä voi kirjautua ulos sovelluksesta - tehty
-- Käyttäjä voi lisätä osakkeita portfolioonsa - tehty
-- Käyttäjä voi poistaa osakkeita portfoliosta - tehty
+- Käyttäjä voi rekisteröityä käyttäjäksi ja siten luoda tilin - tehty vko3
+- Käyttäjä voi kirjautua sisään sovellukseen - tehty vko3
+- Käyttäjä voi kirjautua ulos sovelluksesta - tehty vko4
+- Käyttäjä voi lisätä osakkeita portfolioonsa - tehty vko4
+- Käyttäjä voi poistaa osakkeita portfoliosta - tehty vko4
 - Käyttäjä voi tarkastella osakkeidensa päivittäistä kurssia
 - Käyttäjä voi tarkastella osakkeiden historiallista hintakehitystä kuvaajasta
 
 ### Jatkokehitysideat
-- Käyttäjä näkee osakkeen ostohinnan, prosentuaalisen tuoton ja rahamääräisen tuoton. - tehty osittain (rahamääräinen tuotto jätetty pois)
+- Käyttäjä näkee osakkeen ostohinnan, prosentuaalisen tuoton ja rahamääräisen tuoton. - tehty osittain (rahamääräinen tuotto jätetty pois) vko4
 - Muita rahoitusalan laskuja osakkeisiin liittyen: beta, alfa jne.
 - Koko portfolioon liittyvät kuvaajat: kynttiläkaavio, Pareto-diagrammi jne.
 
