@@ -1,5 +1,5 @@
 from repositories.stock_repository import StockRepository
-
+import yfinance as yf
 
 class StockService:
     def __init__(self, user_id, conn):
@@ -19,7 +19,12 @@ class StockService:
         return success
 
     def get_stock_price(self, ticker):
-        return 0
+        try:
+            ticker = yf.Ticker(ticker)
+            current = ticker.info["currentPrice"]
+            return current, True
+        except:
+            return 0, False
 
     def remove_stock(self, ticker):
         success = self.__repo.remove_stock(ticker)

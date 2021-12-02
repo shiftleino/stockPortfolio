@@ -49,7 +49,7 @@ class PortfolioWindow(QDialog):
         self.setStyleSheet("background-color: #1F2833")
 
     def set_labels(self):
-        text = "Your stock portfolio"
+        text = "Stock portfolio"
         header = QLabel(text)
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 64px")
@@ -99,12 +99,16 @@ class PortfolioWindow(QDialog):
         i = 0
         for stock in data:
             item = QTableWidgetItem(stock[2])
-            current = self.get_current_price(stock[3])
-            return_per = ((current - stock[5]) / stock[5]) * 100
-            item2 = QTableWidgetItem(str(current))
+            current, success = self.get_current_price(stock[3])
+            if success:
+                return_per = ((current - stock[5]) / stock[5]) * 100
+                item2 = QTableWidgetItem(str(current))
+            else:
+                return_per = "N/A"
+                item2 = QTableWidgetItem("N/A")
             item3 = QTableWidgetItem(str(stock[5]))
             item4 = QTableWidgetItem(str(stock[4]))
-            item5 = QTableWidgetItem(str(return_per) + " %")
+            item5 = QTableWidgetItem(f"{return_per:.2f} %")
             for j, item in enumerate([item, item2, item3, item4, item5]):
                 item.setBackground(QColor("white"))
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
