@@ -35,6 +35,8 @@ class PortfolioWindow(QDialog):
         self.add_btn = self.create_add_stock_btn()
         self.rm_btn = self.create_remove_stock_btn()
         self.rf_btn = self.create_refresh_btn()
+        self.info_btn = self.create_info_btn()
+        self.portfolio_btn = self.create_portfolio_btn()
         self.add_btns()
 
         self.setLayout(self.layout)
@@ -49,7 +51,7 @@ class PortfolioWindow(QDialog):
         self.setStyleSheet("background-color: #1F2833")
 
     def set_labels(self):
-        text = "Stock portfolio"
+        text = "Stock Portfolio"
         header = QLabel(text)
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 64px")
@@ -81,11 +83,11 @@ class PortfolioWindow(QDialog):
         table = QTableWidget()
         table.setMinimumWidth(1000)
         table.setMinimumHeight(600)
-        table.setColumnCount(5)
+        table.setColumnCount(6)
         table.setFrameStyle(0)
         table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
-        for i in range(0, 6):
-            table.setColumnWidth(i, 200)
+        for i in range(0, 7):
+            table.setColumnWidth(i, 190)
         table.horizontalHeader().setStyleSheet(
             "background-color: #1F2833; color: #1F2833")
         self.set_table_headers(table)
@@ -99,17 +101,21 @@ class PortfolioWindow(QDialog):
         i = 0
         for stock in data:
             item = QTableWidgetItem(stock[2])
-            current, success = self.get_current_price(stock[3])
+            current, currency, success = self.get_current_price(stock[3])
             if success:
                 return_per = ((current - stock[5]) / stock[5]) * 100
                 item2 = QTableWidgetItem(str(current))
+                item5 = QTableWidgetItem(f"{return_per:.2f} %")
+                return_total = (current - stock[5])*stock[4]
+                item6 = QTableWidgetItem(f"{return_total:.2f} {currency}")
             else:
                 return_per = "N/A"
                 item2 = QTableWidgetItem("N/A")
+                item5 = QTableWidgetItem("N/A")
             item3 = QTableWidgetItem(str(stock[5]))
             item4 = QTableWidgetItem(str(stock[4]))
-            item5 = QTableWidgetItem(f"{return_per:.2f} %")
-            for j, item in enumerate([item, item2, item3, item4, item5]):
+            
+            for j, item in enumerate([item, item2, item3, item4, item5, item6]):
                 item.setBackground(QColor("white"))
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 self.table.setItem(i, j, item)
@@ -117,7 +123,7 @@ class PortfolioWindow(QDialog):
 
     def set_table_headers(self, table):
         labels = ["Stock", "Current price",
-                  "Purchase price", "Amount", "Return-%"]
+                  "Purchase price", "Amount", "Return-%", "Return"]
         font = QFont()
         font.setBold(True)
         font.setPointSize(14)
@@ -131,21 +137,35 @@ class PortfolioWindow(QDialog):
         btn = QPushButton("Add stock")
         btn.setStyleSheet(
             "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(180, 50)
+        btn.setFixedSize(185, 50)
         return btn
 
     def create_remove_stock_btn(self):
         btn = QPushButton("Remove stock")
         btn.setStyleSheet(
             "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(180, 50)
+        btn.setFixedSize(185, 50)
         return btn
 
     def create_refresh_btn(self):
         btn = QPushButton("Refresh table")
         btn.setStyleSheet(
             "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(180, 50)
+        btn.setFixedSize(185, 50)
+        return btn
+
+    def create_info_btn(self):
+        btn = QPushButton("Stock Information")
+        btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        btn.setFixedSize(280, 50)
+        return btn
+
+    def create_portfolio_btn(self):
+        btn = QPushButton("Portfolio Information")
+        btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        btn.setFixedSize(280, 50)
         return btn
 
     def add_btns(self):
@@ -153,6 +173,8 @@ class PortfolioWindow(QDialog):
         btn_layout.addWidget(self.add_btn)
         btn_layout.addWidget(self.rm_btn)
         btn_layout.addWidget(self.rf_btn)
+        btn_layout.addWidget(self.info_btn)
+        btn_layout.addWidget(self.portfolio_btn)
         btn_layout.addStretch()
         self.layout.addLayout(btn_layout)
 
@@ -177,6 +199,7 @@ class PortfolioWindow(QDialog):
                     if ok4:
                         success = self.__stock_service.add_stock(
                             name, ticker, amount, buy_price)
+                        self.populate_table()
                         if not success:
                             self.warning_stock()
                     else:

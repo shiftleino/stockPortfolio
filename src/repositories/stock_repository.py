@@ -7,7 +7,7 @@ class StockRepository:
         id integer primary key autoincrement, 
         user_id integer,
         name text,
-        ticker text UNIQUE,
+        ticker text,
         amount integer,
         price real);"""
         self.__cursor.execute(sql)
@@ -40,3 +40,13 @@ class StockRepository:
             return True
         except:
             return False
+
+    def get_stock_tickers(self):
+        try:
+            sql = "SELECT ticker FROM stocks WHERE user_id=?;"
+            self.__cursor.execute(sql, (self.user_id,))
+            self.__connection.commit()
+            data = self.__cursor.fetchall()
+            return data, True
+        except:
+            return [], False

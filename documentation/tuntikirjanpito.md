@@ -47,8 +47,13 @@
         <td>Luokkakaavio</td>
     </tr>
     <tr>
+        <td>02.12.</td>
+        <td>7</td>
+        <td>Virheiden korjausta ja nykykurssin näkymisen lisääminen.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>30</b></td>
+        <td><b>37</b></td>
         <td></td>
     </tr>
 </table>
