@@ -1,5 +1,6 @@
 from . import db_connection as db
 
+
 def drop_tables(conn):
     cursor = conn.cursor()
     sql = "DROP TABLE IF EXISTS users"

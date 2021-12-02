@@ -1,6 +1,4 @@
-from stock_repository import StockRepository
-import sys
-sys.path.append("src/repositories")
+from repositories.stock_repository import StockRepository
 
 
 class StockService:

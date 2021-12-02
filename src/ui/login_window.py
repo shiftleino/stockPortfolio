@@ -1,8 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QMessageBox
-from portfolio_window import PortfolioWindow
-import sys
-sys.path.append("src/gui")
+from .portfolio_window import PortfolioWindow
 
 
 class LoginWindow(QDialog):

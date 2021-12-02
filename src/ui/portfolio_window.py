@@ -1,9 +1,7 @@
+from services.stock_service import StockService
 from PyQt5.QtGui import QFont, QColor
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QTableWidget, QTableWidgetItem, QInputDialog, QMessageBox
-from stock_service import StockService
-import sys
-sys.path.append("src/services")
 
 
 class PortfolioWindow(QDialog):
