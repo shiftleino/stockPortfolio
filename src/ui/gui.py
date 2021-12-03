@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QStackedWidget
 import sys
 
+
 def start_gui(user_repo, user):
     app = QApplication(sys.argv)
     main_widget = QStackedWidget()

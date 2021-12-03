@@ -1,5 +1,6 @@
-from repositories.stock_repository import StockRepository
 import yfinance as yf
+from repositories.stock_repository import StockRepository
+
 
 class StockService:
     def __init__(self, user_id, conn):
@@ -15,13 +16,14 @@ class StockService:
 
     def add_stock(self, name, ticker, amount, buy_price):
         current, currency, success1 = self.get_stock_price(ticker)
-        data = (self.__user_id, name, ticker, amount, buy_price, current, currency)
+        data = (self.__user_id, name, ticker,
+                amount, buy_price, current, currency)
         user_stocks, success2 = self.return_stock_tickers()
         if success1 and success2:
             if ticker not in user_stocks:
                 success = self.__repo.add_stock(data)
                 return success
-            else: 
+            else:
                 return False
         else:
             return False
