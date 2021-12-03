@@ -42,7 +42,7 @@ class PortfolioWindow(QDialog):
         self.setLayout(self.layout)
 
         self.add_btn.clicked.connect(self.add_stock)
-        self.rf_btn.clicked.connect(self.populate_table)
+        self.rf_btn.clicked.connect(self.refresh_prices)
         self.rm_btn.clicked.connect(self.remove_stock)
         self.logout_btn.clicked.connect(self.logout)
 
@@ -101,25 +101,36 @@ class PortfolioWindow(QDialog):
         i = 0
         for stock in data:
             item = QTableWidgetItem(stock[2])
-            current, currency, success = self.get_current_price(stock[3])
-            if success:
-                return_per = ((current - stock[5]) / stock[5]) * 100
-                item2 = QTableWidgetItem(str(current))
-                item5 = QTableWidgetItem(f"{return_per:.2f} %")
-                return_total = (current - stock[5])*stock[4]
-                item6 = QTableWidgetItem(f"{return_total:.2f} {currency}")
-            else:
-                return_per = "N/A"
-                item2 = QTableWidgetItem("N/A")
-                item5 = QTableWidgetItem("N/A")
+            return_per = ((stock[6] - stock[5]) / stock[5]) * 100
+            item2 = QTableWidgetItem(f"{stock[6]:.2f}")
+            item5 = QTableWidgetItem(f"{return_per:.2f} %")
+            return_total = (stock[6] - stock[5])*stock[4]
+            item6 = QTableWidgetItem(f"{return_total:.2f} {stock[7]}")
             item3 = QTableWidgetItem(str(stock[5]))
             item4 = QTableWidgetItem(str(stock[4]))
-            
             for j, item in enumerate([item, item2, item3, item4, item5, item6]):
                 item.setBackground(QColor("white"))
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 self.table.setItem(i, j, item)
             i += 1
+
+    def refresh_prices(self):
+        tickers, _ = self.__stock_service.return_stock_tickers()
+        data = self.__stock_service.return_user_data()
+        for i, ticker in enumerate(tickers):
+            price = self.__stock_service.get_stock_price(ticker)[0]
+            item = QTableWidgetItem(ticker)
+            return_per = ((price - data[i][5]) / data[i][5]) * 100
+            item2 = QTableWidgetItem(f"{price:.2f}")
+            item5 = QTableWidgetItem(f"{return_per:.2f} %")
+            return_total = (price - data[i][5])*data[i][4]
+            item6 = QTableWidgetItem(f"{return_total:.2f} {data[i][7]}")
+            item3 = QTableWidgetItem(str(data[i][5]))
+            item4 = QTableWidgetItem(str(data[i][4]))
+            for j, item in enumerate([item, item2, item3, item4, item5, item6]):
+                item.setBackground(QColor("white"))
+                item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                self.table.setItem(i, j, item)
 
     def set_table_headers(self, table):
         labels = ["Stock", "Current price",
@@ -148,7 +159,7 @@ class PortfolioWindow(QDialog):
         return btn
 
     def create_refresh_btn(self):
-        btn = QPushButton("Refresh table")
+        btn = QPushButton("Refresh prices")
         btn.setStyleSheet(
             "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
         btn.setFixedSize(185, 50)
@@ -220,6 +231,8 @@ class PortfolioWindow(QDialog):
             success = self.__stock_service.remove_stock(ticker)
             if not success:
                 self.warning_remove()
+            else:
+                self.populate_table()
         else:
             self.warning_input()
 

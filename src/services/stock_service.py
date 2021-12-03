@@ -11,12 +11,13 @@ class StockService:
         data, success = self.__repo.get_user_data()
         if success:
             return data
-        return ["N/A", "N/A", "N/A", "N/A", "N/A"]
+        return ["N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"]
 
     def add_stock(self, name, ticker, amount, buy_price):
-        data = (self.__user_id, name, ticker, amount, buy_price)
-        user_stocks, success1 = self.return_stock_tickers()
-        if success1:
+        current, currency, success1 = self.get_stock_price(ticker)
+        data = (self.__user_id, name, ticker, amount, buy_price, current, currency)
+        user_stocks, success2 = self.return_stock_tickers()
+        if success1 and success2:
             if ticker not in user_stocks:
                 success = self.__repo.add_stock(data)
                 return success
@@ -30,7 +31,7 @@ class StockService:
             ticker = yf.Ticker(ticker)
             current = ticker.info["currentPrice"]
             currency = ticker.info["financialCurrency"]
-            return 0, "EUR", True
+            return current, currency, True
         except:
             return 0, "N/A", False
 

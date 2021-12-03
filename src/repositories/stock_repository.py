@@ -9,7 +9,9 @@ class StockRepository:
         name text,
         ticker text,
         amount integer,
-        price real);"""
+        price real,
+        current real,
+        currency text);"""
         self.__cursor.execute(sql)
         self.__connection.commit()
 
@@ -25,7 +27,7 @@ class StockRepository:
 
     def add_stock(self, data):
         try:
-            sql = "INSERT INTO stocks (user_id, name, ticker, amount, price) VALUES (?,?,?,?,?);"
+            sql = "INSERT INTO stocks (user_id, name, ticker, amount, price, current, currency) VALUES (?,?,?,?,?,?,?);"
             self.__cursor.execute(sql, data)
             self.__connection.commit()
             return True
