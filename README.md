@@ -18,6 +18,9 @@ Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on ha
 ## Huomautuksia toiminnasta
 - Taulukon osakkeiden hintojen päivittäminen voi viedä suhteellisen paljon aikaa sen käyttämän ulkoisen datalähteen (Yahoo Finance, yfinance-kirjasto) takia.
 
+## Julkaisut
+[Viimeisin julkaisu](https://github.com/shiftleino/stockPortfolio/releases/tag/viikko5)<br>
+
 ## Käynnistys
 1. Asenna riippuvuudet
 ```console 
