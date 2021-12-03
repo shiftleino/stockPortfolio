@@ -16,8 +16,7 @@ Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä 
 Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on haittaa, vanhempien versioiden kanssa saattaa tulla ongelmia.
 
 ## Huomautuksia toiminnasta
-- Lisätessä osakkeen tai muuttaessa taulukon tietoja täytyy taulukko päivittää "refresh"-napista.
-- Ohjelmisto on tällä hetkellä hyvin hidas ohjelmiston käyttämän ulkoisen datalähteen (Yahoo Finance, yfinance-kirjasto) takia.
+- Taulukon osakkeiden hintojen päivittäminen voi viedä suhteellisen paljon aikaa sen käyttämän ulkoisen datalähteen (Yahoo Finance, yfinance-kirjasto) takia.
 
 ## Käynnistys
 1. Asenna riippuvuudet
