@@ -25,6 +25,10 @@ class PortfolioWindow(QDialog):
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
 
+        # SET BACKGROUND FOR THE WINDOW
+        self.setAttribute(Qt.WA_StyledBackground, True)
+        self.setStyleSheet("background-color: #1F2833")
+
         self.logout_btn = self.create_logout_btn()
         self.set_labels()
         self.layout.addStretch()
@@ -45,10 +49,6 @@ class PortfolioWindow(QDialog):
         self.rf_btn.clicked.connect(self.refresh_prices)
         self.rm_btn.clicked.connect(self.remove_stock)
         self.logout_btn.clicked.connect(self.logout)
-
-        # SET BACKGROUND FOR THE WINDOW
-        self.setAttribute(Qt.WA_StyledBackground, True)
-        self.setStyleSheet("background-color: #1F2833")
 
     def set_labels(self):
         text = "Stock Portfolio"
