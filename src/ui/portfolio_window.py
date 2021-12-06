@@ -88,8 +88,6 @@ class PortfolioWindow(QDialog):
         table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         for i in range(0, 7):
             table.setColumnWidth(i, 190)
-        table.horizontalHeader().setStyleSheet(
-            "background-color: #1F2833; color: #1F2833")
         self.set_table_headers(table)
         table.setShowGrid(False)
         self.layout.addWidget(table)

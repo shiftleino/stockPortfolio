@@ -57,8 +57,13 @@
         <td>Sekvenssikaavio ja portfolio-toiminnan rakenteen muuttaminen.</td>
     </tr>
     <tr>
+        <td>06.12.</td>
+        <td>1</td>
+        <td>Virheiden korjausta.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>43</b></td>
+        <td><b>44</b></td>
         <td></td>
     </tr>
 </table>
