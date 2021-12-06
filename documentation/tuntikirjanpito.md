@@ -52,8 +52,13 @@
         <td>Virheiden korjausta ja nykykurssin näkymisen lisääminen.</td>
     </tr>
     <tr>
+        <td>03.12.</td>
+        <td>6</td>
+        <td>Sekvenssikaavio ja portfolio-toiminnan rakenteen muuttaminen.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>37</b></td>
+        <td><b>43</b></td>
         <td></td>
     </tr>
 </table>
