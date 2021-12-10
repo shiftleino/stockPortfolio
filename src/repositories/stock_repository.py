@@ -52,3 +52,13 @@ class StockRepository:
             return data, True
         except:
             return [], False
+    
+    def get_data_one_stock(self, ticker):
+        try:
+            sql = "SELECT * FROM stocks WHERE user_id=? AND ticker=?;"
+            self.__cursor.execute(sql, (self.user_id, ticker))
+            self.__connection.commit()
+            data = self.__cursor.fetchall()
+            return data, True
+        except:
+            return [], False

@@ -1,6 +1,6 @@
 import yfinance as yf
 from repositories.stock_repository import StockRepository
-
+import pandas as pd
 
 class StockService:
     def __init__(self, user_id, conn):
@@ -56,3 +56,19 @@ class StockService:
                 return False
         else:
             return True
+
+    def get_data_of_stock(self, ticker):
+        result, success = self.__repo.get_data_one_stock(ticker)
+        if success:
+            return result[0]
+        else:
+            return ("N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A")
+    
+    def get_historical_data(self, ticker):
+        try:
+            data = yf.download(tickers=ticker, period="max")
+            x = data.index.to_pydatetime()
+            y = data["Adj Close"]
+            return [i.timestamp() for i in x], y
+        except:
+            return [], []

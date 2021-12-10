@@ -293,6 +293,17 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "pyqtgraph"
+version = "0.12.3"
+description = "Scientific Graphics and GUI Library for Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+numpy = ">=1.17.0"
+
+[[package]]
 name = "pytest"
 version = "6.2.5"
 description = "pytest: simple powerful testing with Python"
@@ -436,7 +447,7 @@ requests = ">=2.20"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "be7dca0424821c5639fc9910c281141128dc182a393c9677dc4ad13c87cc387a"
+content-hash = "bcbe0601d5ae652c9a5c99bc8a3d2ca0dc51e3b8e7a83d004ad5021d484b8dbf"
 
 [metadata.files]
 astroid = [
@@ -745,6 +756,10 @@ pyqt5-sip = [
     {file = "PyQt5_sip-12.9.0-cp39-cp39-win32.whl", hash = "sha256:4f8e05fe01d54275877c59018d8e82dcdd0bc5696053a8b830eecea3ce806121"},
     {file = "PyQt5_sip-12.9.0-cp39-cp39-win_amd64.whl", hash = "sha256:b09f4cd36a4831229fb77c424d89635fa937d97765ec90685e2f257e56a2685a"},
     {file = "PyQt5_sip-12.9.0.tar.gz", hash = "sha256:d3e4489d7c2b0ece9d203ae66e573939f7f60d4d29e089c9f11daa17cfeaae32"},
+]
+pyqtgraph = [
+    {file = "pyqtgraph-0.12.3-py3-none-any.whl", hash = "sha256:06997eaae40bfa2b870647f98384a63b12f75118303b674337a080f8eb9a0030"},
+    {file = "pyqtgraph-0.12.3.tar.gz", hash = "sha256:f1dfee710fa5e9abaaf3d4dff0116659e6c7b4e7b514870c5cddad268a753d74"},
 ]
 pytest = [
     {file = "pytest-6.2.5-py3-none-any.whl", hash = "sha256:7310f8d27bc79ced999e760ca304d69f6ba6c6649c0b60fb0e04a4a77cacc134"},
