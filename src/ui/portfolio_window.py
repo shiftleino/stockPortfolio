@@ -40,7 +40,7 @@ class PortfolioWindow(QDialog):
         self.add_btn = self.create_btn("Add Stock", 185, 50)
         self.rm_btn = self.create_btn("Remove Stock", 185, 50)
         self.rf_btn = self.create_btn("Refresh Prices", 185, 50)
-        self.info_btn = self.create_btn("Stock Information", 280, 50)
+        self.info_btn = self.create_btn("View Graph of a Stock", 280, 50)
         self.portfolio_btn = self.create_btn("Portfolio Information", 280, 50)
         self.add_btns()
 
@@ -251,7 +251,7 @@ class PortfolioWindow(QDialog):
         form = QInputDialog()
         form.setStyleSheet("font-size: 18px")
         ticker, ok = QInputDialog.getText(
-            form, "View a stock", "Enter the ticker of the stock you want to view:")
+            form, "View graph of a stock", "Enter the ticker of the stock you want to view:")
         if ok:
             ok2 = self.__stock_service.check_if_ticker_in_db(ticker)
             if ok2:

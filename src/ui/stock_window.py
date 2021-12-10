@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
 from PyQt5.QtCore import Qt
 from pyqtgraph import PlotWidget, DateAxisItem
-import pyqtgraph as pg
 
 
 class StockWindow(QDialog):
@@ -10,6 +9,7 @@ class StockWindow(QDialog):
         self.__main_widget = main_widget
         self.__stock_service = stock_service
         self.__ticker = ticker
+        self.data = self.__stock_service.get_data_of_stock(self.__ticker)
         self.layout = QVBoxLayout()
 
         # SET BACKGROUND FOR THE WINDOW
@@ -21,7 +21,6 @@ class StockWindow(QDialog):
         self.add_label(top_layout)
         top_layout.addWidget(self.return_btn)
         self.layout.addLayout(top_layout)
-        self.layout.addStretch()
 
         self.add_graph()
 
@@ -29,8 +28,7 @@ class StockWindow(QDialog):
         self.setLayout(self.layout)
 
     def add_label(self, layout):
-        data = self.__stock_service.get_data_of_stock(self.__ticker)
-        header = QLabel(data[2])
+        header = QLabel(self.data[2])
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 64px")
         layout.addWidget(header)
@@ -44,10 +42,13 @@ class StockWindow(QDialog):
         return btn
 
     def add_graph(self):
-        self.graph = PlotWidget(axisItems={'bottom': DateAxisItem()})
+        graph = PlotWidget(axisItems={'bottom': DateAxisItem()})
         x, y = self.__stock_service.get_historical_data(self.__ticker)
-        self.graph.plot(x, y)
-        self.layout.addWidget(self.graph)
+
+        graph.getPlotItem().setLabels(left="Price", bottom="Date")
+        graph.getPlotItem().showGrid(x=True, y=True)
+        graph.plot(x, y)
+        self.layout.addWidget(graph)
 
     def return_portfolio_window(self):
         self.__main_widget.setCurrentIndex(3)
