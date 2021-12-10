@@ -51,5 +51,3 @@ class TestUserRepository(unittest.TestCase):
         result = self.repo.check_username_exists("username2")
         self.assertEqual(result, False)
         self.conn.close()
-
-

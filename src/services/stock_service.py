@@ -2,6 +2,7 @@ import yfinance as yf
 from repositories.stock_repository import StockRepository
 import pandas as pd
 
+
 class StockService:
     def __init__(self, user_id, conn):
         self.__user_id = user_id
@@ -63,7 +64,7 @@ class StockService:
             return result[0]
         else:
             return ("N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A")
-    
+
     def get_historical_data(self, ticker):
         try:
             data = yf.download(tickers=ticker, period="max")

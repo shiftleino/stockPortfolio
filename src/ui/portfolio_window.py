@@ -231,7 +231,7 @@ class PortfolioWindow(QDialog):
             "Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
         box.setIcon(QMessageBox.Critical)
         box.exec_()
-    
+
     def warning_ticker(self):
         box = QMessageBox()
         box.setWindowTitle("StockError")
@@ -255,10 +255,11 @@ class PortfolioWindow(QDialog):
         if ok:
             ok2 = self.__stock_service.check_if_ticker_in_db(ticker)
             if ok2:
-                stock_window = StockWindow(self.main_widget, self.__stock_service, ticker)
+                stock_window = StockWindow(
+                    self.main_widget, self.__stock_service, ticker)
                 self.main_widget.addWidget(stock_window)
                 self.main_widget.setCurrentIndex(4)
             else:
                 self.warning_ticker()
-        else: 
+        else:
             self.warning_input()

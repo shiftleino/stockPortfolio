@@ -52,7 +52,7 @@ class StockRepository:
             return data, True
         except:
             return [], False
-    
+
     def get_data_one_stock(self, ticker):
         try:
             sql = "SELECT * FROM stocks WHERE user_id=? AND ticker=?;"
