@@ -62,8 +62,13 @@
         <td>Virheiden korjausta.</td>
     </tr>
     <tr>
+        <td>10.12.</td>
+        <td>7</td>
+        <td>Osakkeiden historiallisen kurssin kuvaajan teko.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>44</b></td>
+        <td><b>51</b></td>
         <td></td>
     </tr>
 </table>
