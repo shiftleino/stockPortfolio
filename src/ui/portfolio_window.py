@@ -1,4 +1,5 @@
 from services.stock_service import StockService
+from .stock_window import StockWindow
 from PyQt5.QtGui import QFont, QColor
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QTableWidget, QTableWidgetItem, QInputDialog, QMessageBox
@@ -36,11 +37,11 @@ class PortfolioWindow(QDialog):
         self.table = self.set_table()
         self.populate_table()
 
-        self.add_btn = self.create_add_stock_btn()
-        self.rm_btn = self.create_remove_stock_btn()
-        self.rf_btn = self.create_refresh_btn()
-        self.info_btn = self.create_info_btn()
-        self.portfolio_btn = self.create_portfolio_btn()
+        self.add_btn = self.create_btn("Add Stock", 185, 50)
+        self.rm_btn = self.create_btn("Remove Stock", 185, 50)
+        self.rf_btn = self.create_btn("Refresh Prices", 185, 50)
+        self.info_btn = self.create_btn("Stock Information", 280, 50)
+        self.portfolio_btn = self.create_btn("Portfolio Information", 280, 50)
         self.add_btns()
 
         self.setLayout(self.layout)
@@ -49,6 +50,7 @@ class PortfolioWindow(QDialog):
         self.rf_btn.clicked.connect(self.refresh_prices)
         self.rm_btn.clicked.connect(self.remove_stock)
         self.logout_btn.clicked.connect(self.logout)
+        self.info_btn.clicked.connect(self.stock_info)
 
     def set_labels(self):
         text = "Stock Portfolio"
@@ -72,12 +74,19 @@ class PortfolioWindow(QDialog):
 
         self.layout.addLayout(label_layout)
 
+    def create_btn(self, text, x, y):
+        btn = QPushButton(text)
+        btn.setStyleSheet(
+            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
+        btn.setFixedSize(x, y)
+        return btn
+
     def create_logout_btn(self):
-        logout = QPushButton("Log out")
-        logout.setStyleSheet(
+        btn = QPushButton("Logout")
+        btn.setStyleSheet(
             "QPushButton {background-color: #CFC6C7; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        logout.setFixedSize(180, 50)
-        return logout
+        btn.setFixedSize(180, 59)
+        return btn
 
     def set_table(self):
         table = QTableWidget()
@@ -98,7 +107,7 @@ class PortfolioWindow(QDialog):
         self.table.setRowCount(len(data))
         i = 0
         for stock in data:
-            item = QTableWidgetItem(stock[2])
+            item = QTableWidgetItem(f"{stock[2]} ({stock[3]})")
             return_per = ((stock[6] - stock[5]) / stock[5]) * 100
             item2 = QTableWidgetItem(f"{stock[6]:.2f}")
             item5 = QTableWidgetItem(f"{return_per:.2f} %")
@@ -141,41 +150,6 @@ class PortfolioWindow(QDialog):
             item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             item.setFont(font)
             table.setHorizontalHeaderItem(i, item)
-
-    def create_add_stock_btn(self):
-        btn = QPushButton("Add stock")
-        btn.setStyleSheet(
-            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(185, 50)
-        return btn
-
-    def create_remove_stock_btn(self):
-        btn = QPushButton("Remove stock")
-        btn.setStyleSheet(
-            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(185, 50)
-        return btn
-
-    def create_refresh_btn(self):
-        btn = QPushButton("Refresh prices")
-        btn.setStyleSheet(
-            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(185, 50)
-        return btn
-
-    def create_info_btn(self):
-        btn = QPushButton("Stock Information")
-        btn.setStyleSheet(
-            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(280, 50)
-        return btn
-
-    def create_portfolio_btn(self):
-        btn = QPushButton("Portfolio Information")
-        btn.setStyleSheet(
-            "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
-        btn.setFixedSize(280, 50)
-        return btn
 
     def add_btns(self):
         btn_layout = QHBoxLayout()
@@ -257,6 +231,14 @@ class PortfolioWindow(QDialog):
             "Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
         box.setIcon(QMessageBox.Critical)
         box.exec_()
+    
+    def warning_ticker(self):
+        box = QMessageBox()
+        box.setWindowTitle("StockError")
+        box.setText(
+            "Something went wrong when trying to view the stock!\nCheck that you have the stock in your portfolio.")
+        box.setIcon(QMessageBox.Critical)
+        box.exec_()
 
     def logout(self):
         self.__user.set_username(None)
@@ -264,3 +246,19 @@ class PortfolioWindow(QDialog):
         self.__user.set_password(None)
         self.main_widget.setCurrentIndex(0)
         self.main_widget.removeWidget(self)
+
+    def stock_info(self):
+        form = QInputDialog()
+        form.setStyleSheet("font-size: 18px")
+        ticker, ok = QInputDialog.getText(
+            form, "View a stock", "Enter the ticker of the stock you want to view:")
+        if ok:
+            ok2 = self.__stock_service.check_if_ticker_in_db(ticker)
+            if ok2:
+                stock_window = StockWindow(self.main_widget, self.__stock_service, ticker)
+                self.main_widget.addWidget(stock_window)
+                self.main_widget.setCurrentIndex(4)
+            else:
+                self.warning_ticker()
+        else: 
+            self.warning_input()

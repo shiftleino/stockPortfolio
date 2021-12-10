@@ -45,3 +45,14 @@ class StockService:
         tickers, success = self.__repo.get_stock_tickers()
         result = [ticker for t in tickers for ticker in t]
         return result, success
+
+    def check_if_ticker_in_db(self, ticker):
+        result, success = self.__repo.get_stock_tickers()
+        tickers = [ticker for t in result for ticker in t]
+        if success:
+            if ticker in tickers:
+                return True
+            else:
+                return False
+        else:
+            return True
