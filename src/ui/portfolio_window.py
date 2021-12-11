@@ -126,7 +126,7 @@ class PortfolioWindow(QDialog):
         data = self.__stock_service.return_user_data()
         for i, ticker in enumerate(tickers):
             price = self.__stock_service.get_stock_price(ticker)[0]
-            item = QTableWidgetItem(ticker)
+            item = QTableWidgetItem(f"{data[i][2]} ({data[i][3]})")
             return_per = ((price - data[i][5]) / data[i][5]) * 100
             item2 = QTableWidgetItem(f"{price:.2f}")
             item5 = QTableWidgetItem(f"{return_per:.2f} %")
