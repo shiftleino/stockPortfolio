@@ -47,4 +47,7 @@ To remove a stock from the portfolio, press "Remove a Stock" and enter the ticke
 To refresh the current prices in the table, use button "Refresh Prices". It is important to notice that the prices are being collected from the web and therefore there is a small lag when refreshing the prices depending how many stocks you have in the table (1-3s per stock).
 
 ### Viewing Stock Graph
-You can view each stocks historical graph by pressing "View Graph of a Stock". in the pop-up window eneter the ticker of the stock you want to view. This opens up a new window which shows the historical graph. The graph is interactive and therefore you can zoom in/out and move in the graph. Press "Return to Portfolio" to return back to the "main window". 
+You can view each stocks historical graph by pressing "View Graph of a Stock". in the pop-up window enter the ticker of the stock you want to view. This opens up a new window which shows the historical graph. The graph is interactive and therefore you can zoom in/out and move in the graph. Press "Return to Portfolio" to return back to the "main window". 
+
+### Portfolio Information
+Coming soon...
