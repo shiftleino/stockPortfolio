@@ -1,3 +1,6 @@
+import sqlite3
+
+
 class UserRepository:
     def __init__(self, connection):
         self.__connection = connection
@@ -23,10 +26,7 @@ class UserRepository:
         cursor.execute(sql, (username,))
         self.__connection.commit()
         rows = cursor.fetchall()
-        if len(rows) > 0:
-            return True
-        else:
-            return False
+        return len(rows) > 0
 
     def correct_password(self, username, password):
         """Checks if the given username matches the given password.
@@ -42,11 +42,8 @@ class UserRepository:
         sql = "SELECT password FROM users WHERE username=?;"
         cursor.execute(sql, (username,))
         self.__connection.commit()
-        pw = cursor.fetchone()[0]
-        if password == pw:
-            return True
-        else:
-            return False
+        user_password = cursor.fetchone()[0]
+        return password == user_password
 
     def get_user_id(self, username):
         """Finds and returns the id of the given username.
@@ -61,8 +58,8 @@ class UserRepository:
         sql = "SELECT id FROM users WHERE username=?;"
         cursor.execute(sql, (username,))
         self.__connection.commit()
-        id = cursor.fetchone()[0]
-        return id
+        user_id = cursor.fetchone()[0]
+        return user_id
 
     def add_user(self, username, password):
         """[summary]
@@ -79,7 +76,7 @@ class UserRepository:
             cursor.execute(sql, (username, password,))
             self.__connection.commit()
             return True
-        except Exception:
+        except sqlite3.Error:
             return False
 
     def return_conn(self):

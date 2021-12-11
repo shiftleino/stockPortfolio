@@ -2,7 +2,7 @@ class User:
     """Class fo the User.
     """
 
-    def __init__(self, id=None, username=None, password=None):
+    def __init__(self, user_id=None, username=None, password=None):
         """Constructor for the User-class.
 
         Args:
@@ -10,7 +10,7 @@ class User:
             username (string, optional): Username. Defaults to None.
             password (string, optional): Password of the user. Defaults to None.
         """
-        self.__id = id
+        self.__id = user_id
         self.__username = username
         self.__password = password
 
@@ -54,10 +54,10 @@ class User:
         """
         self.__password = password
 
-    def set_id(self, id):
+    def set_id(self, given_id):
         """Sets the id of teh user to the given id.
 
         Args:
             id (integer): Given id.
         """
-        self.__id = id
+        self.__id = given_id

@@ -15,7 +15,7 @@ Sovelluksella on ainoastaan yksi käyttäjärooli, normaali käyttäjä. Pääk�
 - Käyttäjä voi lisätä osakkeita portfolioonsa - tehty vko4
 - Käyttäjä voi poistaa osakkeita portfoliosta - tehty vko4
 - Käyttäjä voi tarkastella osakkeidensa päivittäistä kurssia - tehty vko5
-- Käyttäjä voi tarkastella osakkeiden historiallista hintakehitystä kuvaajasta
+- Käyttäjä voi tarkastella osakkeiden historiallista hintakehitystä kuvaajasta - tehty vko6
 
 ### Jatkokehitysideat
 - Käyttäjä näkee osakkeen ostohinnan, prosentuaalisen tuoton ja rahamääräisen tuoton. - tehty vko4 ja vko5

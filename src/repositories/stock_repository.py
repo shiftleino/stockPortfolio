@@ -1,3 +1,6 @@
+import sqlite3
+
+
 class StockRepository:
     def __init__(self, connection, user_id):
         self.__connection = connection
@@ -22,16 +25,18 @@ class StockRepository:
             self.__connection.commit()
             data = self.__cursor.fetchall()
             return data, True
-        except:
+        except sqlite3.Error:
             return [], False
 
     def add_stock(self, data):
         try:
-            sql = "INSERT INTO stocks (user_id, name, ticker, amount, price, current, currency) VALUES (?,?,?,?,?,?,?);"
+            sql = """INSERT INTO stocks 
+            (user_id, name, ticker, amount, price, current, currency) 
+            VALUES (?,?,?,?,?,?,?);"""
             self.__cursor.execute(sql, data)
             self.__connection.commit()
             return True
-        except:
+        except sqlite3.Error:
             return False
 
     def remove_stock(self, ticker):
@@ -40,7 +45,7 @@ class StockRepository:
             self.__cursor.execute(sql, (self.user_id, ticker))
             self.__connection.commit()
             return True
-        except:
+        except sqlite3.Error:
             return False
 
     def get_stock_tickers(self):
@@ -50,7 +55,7 @@ class StockRepository:
             self.__connection.commit()
             data = self.__cursor.fetchall()
             return data, True
-        except:
+        except sqlite3.Error:
             return [], False
 
     def get_data_one_stock(self, ticker):
@@ -60,5 +65,5 @@ class StockRepository:
             self.__connection.commit()
             data = self.__cursor.fetchall()
             return data, True
-        except:
+        except sqlite3.Error:
             return [], False

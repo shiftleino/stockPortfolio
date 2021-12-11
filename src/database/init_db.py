@@ -5,6 +5,8 @@ def drop_tables(conn):
     cursor = conn.cursor()
     sql = "DROP TABLE IF EXISTS users"
     cursor.execute(sql)
+    sql2 = "DROP TABLE IF EXISTS stocks"
+    cursor.execute(sql2)
     conn.commit()
 
 
@@ -15,6 +17,16 @@ def create_tables(conn):
         username text UNIQUE, 
         password text);"""
     cursor.execute(sql)
+    sql2 = """CREATE TABLE IF NOT EXISTS stocks (
+        id integer primary key autoincrement, 
+        user_id integer,
+        name text,
+        ticker text,
+        amount integer,
+        price real,
+        current real,
+        currency text);"""
+    cursor.execute(sql2)
     conn.commit()
 
 
