@@ -67,8 +67,13 @@
         <td>Osakkeiden historiallisen kurssin kuvaajan teko.</td>
     </tr>
     <tr>
+        <td>11.12.</td>
+        <td>5</td>
+        <td>Docstring ja dokumentaatio.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>51</b></td>
+        <td><b>56</b></td>
         <td></td>
     </tr>
 </table>
