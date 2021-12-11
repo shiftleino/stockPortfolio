@@ -24,7 +24,7 @@ Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on ha
 [Viimeisin julkaisu](https://github.com/shiftleino/stockPortfolio/releases/tag/viikko5)<br>
 
 ## Käynnistys
-Helpoin tapa käyttää sovellusta on asentaa ensiksi Poetry ([Linkki](https://python-poetry.org/docs/#installation)), kloonata projekti itselleen ja tämän jälkeen seurata alla olevia ohjeita.<br>
+Helpoin tapa käyttää sovellusta on asentaa ensiksi Poetry ([linkki](https://python-poetry.org/docs/#installation)), kloonata projekti itselleen ja tämän jälkeen seurata alla olevia ohjeita.<br>
 
 1. Asenna riippuvuudet
 ```console 
