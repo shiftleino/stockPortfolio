@@ -2,7 +2,14 @@ import sqlite3
 
 
 class UserRepository:
+    """Class for communicating with the database (table users).
+    """
     def __init__(self, connection):
+        """Constructor for the class.
+        
+        Args:
+            connection (SQLite3 Connection): Connection for the database.
+        """
         self.__connection = connection
         cursor = self.__connection.cursor()
         sql = """CREATE TABLE IF NOT EXISTS users (
@@ -28,6 +35,7 @@ class UserRepository:
         rows = cursor.fetchall()
         return len(rows) > 0
 
+
     def correct_password(self, username, password):
         """Checks if the given username matches the given password.
 
@@ -36,7 +44,7 @@ class UserRepository:
             password (string): Given password.
 
         Returns:
-            boolean: True or False
+            boolean: If the username in the database has same password or not.
         """
         cursor = self.__connection.cursor()
         sql = "SELECT password FROM users WHERE username=?;"
@@ -52,7 +60,7 @@ class UserRepository:
             username (string): Given username.
 
         Returns:
-            integer: Id matching the given username.
+            integer: User id matching the given username.
         """
         cursor = self.__connection.cursor()
         sql = "SELECT id FROM users WHERE username=?;"
@@ -62,11 +70,11 @@ class UserRepository:
         return user_id
 
     def add_user(self, username, password):
-        """[summary]
+        """Method for adding a user to the database.
 
         Args:
-            username ([type]): [description]
-            password ([type]): [description]
+            username (string): Username to be added.
+            password (string): Password to be added.
         Returns:
             boolean: If the insertion is successful.
         """
@@ -80,4 +88,9 @@ class UserRepository:
             return False
 
     def return_conn(self):
+        """Returns the connection for the database.
+
+        Returns:
+            SQLite3 Connection: The connection for the database.
+        """
         return self.__connection
