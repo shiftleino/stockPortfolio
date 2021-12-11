@@ -8,6 +8,7 @@ Sovellus on graafisella käyttöliittymällä toteutettu osakeportfolion hallinn
 Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä linkeistä.
 
 ## Dokumentaatio
+[Instructions in English](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/instructions.md)<br>
 [Työtunnit](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
 [Vaatimusmäärittely](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)</br>
 [Arkkitehtuurikuvaus](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/arkkitehtuuri.md)
