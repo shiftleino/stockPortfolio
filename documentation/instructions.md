@@ -21,8 +21,10 @@ If you don't have Poetry, run the file src/index.py in your console.
 ## Sign up
 You can create a new user by first clicking Sign up in the following window.
 ![First Window](../images/first_win.png)
+
 Then enter your username and password in the following fields and press "Sign up". The application warns if the username or the password is not valid. 
 ![Sign Up](../images/signup_win.png)
+
 After this you are being redirected to the login window.
 
 ## Log in
