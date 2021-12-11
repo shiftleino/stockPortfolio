@@ -48,6 +48,7 @@ To refresh the current prices in the table, use button "Refresh Prices". It is i
 
 ### Viewing Stock Graph
 You can view each stocks historical graph by pressing "View Graph of a Stock". in the pop-up window enter the ticker of the stock you want to view. This opens up a new window which shows the historical graph. The graph is interactive and therefore you can zoom in/out and move in the graph. Press "Return to Portfolio" to return back to the "main window". 
+![Stock Graph](../images/graph_win.png)
 
 ### Portfolio Information
 Coming soon...
