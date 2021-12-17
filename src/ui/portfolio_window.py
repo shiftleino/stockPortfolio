@@ -137,7 +137,10 @@ class PortfolioWindow(QDialog):
         i = 0
         for stock in data:
             stockname_item = QTableWidgetItem(f"{stock[2]} ({stock[3]})")
-            return_per = ((stock[6] - stock[5]) / stock[5]) * 100
+            if int(stock[5]) != 0:
+                return_per = ((stock[6] - stock[5]) / stock[5]) * 100
+            else:
+                return_per = 0.0
             currentprice_item = QTableWidgetItem(f"{stock[6]:.2f}")
             returnper_item = QTableWidgetItem(f"{return_per:.2f} %")
             return_total = (stock[6] - stock[5])*stock[4]
@@ -159,7 +162,10 @@ class PortfolioWindow(QDialog):
         for i, ticker in enumerate(tickers):
             price = self.__stock_service.get_stock_price(ticker)[0]
             stockname_item = QTableWidgetItem(f"{data[i][2]} ({data[i][3]})")
-            return_per = ((price - data[i][5]) / data[i][5]) * 100
+            if int(data[i][5]) != 0:
+                return_per = ((price - data[i][5]) / data[i][5]) * 100
+            else:
+                return_per = 0.0
             currentprice_item = QTableWidgetItem(f"{price:.2f}")
             returnper_item = QTableWidgetItem(f"{return_per:.2f} %")
             return_total = (price - data[i][5])*data[i][4]
@@ -226,10 +232,10 @@ class PortfolioWindow(QDialog):
                 user_form, "Add new stock", "Enter the ticker of the stock:")
             if ok2 and len(ticker) != 0:
                 amount, ok3 = QInputDialog.getInt(
-                    user_form, "Add new stock", "Enter the amount:", min=0)
+                    user_form, "Add new stock", "Enter the amount:", min=1)
                 if ok3:
                     buy_price, ok4 = QInputDialog.getDouble(
-                        user_form, "Add new stock", "Enter the price you bought the stock:", min=0)
+                        user_form, "Add new stock", "Enter the price you bought the stock:", min=0.0001)
                     if ok4:
                         success = self.__stock_service.add_stock(
                             name, ticker, amount, buy_price)
