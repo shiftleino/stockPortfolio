@@ -28,8 +28,6 @@ class StartWindow(QDialog):
 
         self.login_btn.clicked.connect(self.change_login)
         self.signup_btn.clicked.connect(self.change_signup)
-
-        # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet("background-color: #1F2833")
 
@@ -40,12 +38,10 @@ class StartWindow(QDialog):
         subtext = "Welcome to the Stock Portfolio Manager."
         header = QLabel(text)
         subheader = QLabel(subtext)
-
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 80px")
         subheader.setStyleSheet(
             "color: white; font-weight: bold; font: Georgia; font-size: 40px")
-
         header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         subheader.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.layout.addWidget(header)

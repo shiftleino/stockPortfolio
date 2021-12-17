@@ -10,6 +10,12 @@ class SignupWindow(QDialog):
     """
 
     def __init__(self, main_widget, repo):
+        """Constructor for the class.
+
+        Args:
+            main_widget (QStackedWidget): The main widget that contains all the windows.
+            repo (UserRepository): The class for communicating with the database.
+        """
         super().__init__()
         self.__user_repo = repo
         self.main_widget = main_widget
@@ -27,24 +33,20 @@ class SignupWindow(QDialog):
 
         self.signup_btn.clicked.connect(self.signup)
         self.login_btn.clicked.connect(self.change_to_login)
-
-        # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet("background-color: #1F2833")
 
     def set_labels(self):
-        """Sets headers for the Log In Window.
+        """Sets headers for the Sign Up Window.
         """
         text = "Stock Portfolio Manager"
         subtext = "Create a new account."
         header = QLabel(text)
         subheader = QLabel(subtext)
-
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 80px")
         subheader.setStyleSheet(
             "color: white; font-weight: bold; font: Georgia; font-size: 40px")
-
         header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         subheader.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.layout.addWidget(header)
@@ -57,7 +59,6 @@ class SignupWindow(QDialog):
         Returns:
             QLineEdit, QLineEdit: The textfields for username and password.
         """
-        # USERNAME FIELD
         username_field = QLineEdit()
         username_field.setPlaceholderText("Enter username")
         username_field.setFixedSize(300, 50)
@@ -69,7 +70,6 @@ class SignupWindow(QDialog):
         userform_layout.addStretch()
         self.layout.addLayout(userform_layout)
 
-        # PASSWORD FIELD
         password_field = QLineEdit()
         password_field.setPlaceholderText("Enter password")
         password_field.setFixedSize(300, 50)
@@ -138,7 +138,7 @@ class SignupWindow(QDialog):
         return label
 
     def signup(self):
-        """Creates the user account and checks if successful.
+        """Creates the user account and checks if successful. If yes, redirects to log in window.
         """
         username = self.user_name_field.text()
         password = self.password_field.text()
@@ -147,7 +147,6 @@ class SignupWindow(QDialog):
             if successful:
                 self.user_name_field.clear()
                 self.password_field.clear()
-                # SHOW THE Login WINDOW
                 self.main_widget.setCurrentIndex(1)
             else:
                 self.error.setText(

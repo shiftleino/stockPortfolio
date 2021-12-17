@@ -33,11 +33,8 @@ class LoginWindow(QDialog):
         self.layout.addStretch(10)
         self.setLayout(self.layout)
 
-        # FUNCTIONALITY OF THE BUTTONS
         self.login_btn.clicked.connect(self.login)
         self.no_account_btn.clicked.connect(self.change_to_signup)
-
-        # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet("background-color: #1F2833")
 
@@ -48,12 +45,10 @@ class LoginWindow(QDialog):
         subtext = "Log in to your account."
         header = QLabel(text)
         subheader = QLabel(subtext)
-
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 80px")
         subheader.setStyleSheet(
             "color: white; font-weight: bold; font: Georgia; font-size: 40px")
-
         header.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         subheader.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.layout.addWidget(header)
@@ -66,7 +61,6 @@ class LoginWindow(QDialog):
         Returns:
             QLineEdit, QLineEdit: The textfields for username and password.
         """
-        # USERNAME FIELD
         username_field = QLineEdit()
         username_field.setPlaceholderText("Enter username")
         username_field.setFixedSize(300, 50)
@@ -78,7 +72,6 @@ class LoginWindow(QDialog):
         userform_layout.addStretch()
         self.layout.addLayout(userform_layout)
 
-        # PASSWORD FIELD
         password_field = QLineEdit()
         password_field.setPlaceholderText("Enter password")
         password_field.setFixedSize(300, 50)
@@ -159,7 +152,7 @@ class LoginWindow(QDialog):
                 self.__user.set_id(id)
                 self.user_name_field.clear()
                 self.password_field.clear()
-                # SHOW THE PORTFOLIO WINDOW
+
                 portfolio = PortfolioWindow(
                     self.main_widget, self.__user_repo, self.__user)
                 self.main_widget.addWidget(portfolio)
