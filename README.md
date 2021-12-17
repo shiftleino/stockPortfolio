@@ -8,10 +8,10 @@ Sovellus on graafisella käyttöliittymällä toteutettu osakeportfolion hallinn
 Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä linkeistä.
 
 ## Dokumentaatio
-[Instructions in English](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/instructions.md)<br>
-[Työtunnit](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/tuntikirjanpito.md)<br>
-[Vaatimusmäärittely](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/vaatimusmaarittely.md)</br>
-[Arkkitehtuurikuvaus](https://github.com/shiftleino/stockPortfolio/blob/main/documentation/arkkitehtuuri.md)
+[Instructions in English](./documentation/instructions.md)<br>
+[Työtunnit](./documentation/tuntikirjanpito.md)<br>
+[Vaatimusmäärittely](./documentation/vaatimusmaarittely.md)</br>
+[Arkkitehtuurikuvaus](./documentation/arkkitehtuuri.md)
 
 ## Python-versio
 Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on haittaa, vanhempien versioiden kanssa saattaa tulla ongelmia.

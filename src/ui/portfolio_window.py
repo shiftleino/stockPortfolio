@@ -17,6 +17,8 @@ class PortfolioWindow(QDialog):
 
         Args:
             main_widget (QStackedWidget): The main widget that contains all the windows.
+            repo (UserRepository): The repository for the user.
+            user (User): The user object.
         """
         super().__init__()
         self.__user = user
@@ -26,7 +28,6 @@ class PortfolioWindow(QDialog):
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
 
-        # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet("background-color: #1F2833")
 
@@ -53,6 +54,8 @@ class PortfolioWindow(QDialog):
         self.info_btn.clicked.connect(self.stock_info)
 
     def set_labels(self):
+        """Method for setting the labels for the window.
+        """
         text = "Stock Portfolio"
         header = QLabel(text)
         header.setStyleSheet(
@@ -71,10 +74,19 @@ class PortfolioWindow(QDialog):
         logout_layout.addWidget(self.logout_btn)
         logout_layout.addWidget(user_header)
         label_layout.addLayout(logout_layout)
-
         self.layout.addLayout(label_layout)
 
     def create_btn(self, text, x, y):
+        """Method for adding a blue button on the window.
+
+        Args:
+            text (string): The text in the button.
+            x (int): The width of the button.
+            y (int): The height of the button.
+
+        Returns:
+            QPushButton: The created button.
+        """
         btn = QPushButton(text)
         btn.setStyleSheet(
             "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
@@ -82,6 +94,11 @@ class PortfolioWindow(QDialog):
         return btn
 
     def create_logout_btn(self):
+        """Creates a grey button for the log out functionality.
+
+        Returns:
+            QPushButton: The created button.
+        """
         btn = QPushButton("Logout")
         btn.setStyleSheet(
             "QPushButton {background-color: #CFC6C7; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
@@ -89,6 +106,11 @@ class PortfolioWindow(QDialog):
         return btn
 
     def set_table(self):
+        """Sets up an empty table.
+
+        Returns:
+            QTableWidget: The created empty table.
+        """
         table = QTableWidget()
         table.setMinimumWidth(1000)
         table.setMinimumHeight(600)
@@ -103,43 +125,52 @@ class PortfolioWindow(QDialog):
         return table
 
     def populate_table(self):
+        """Populates the table of the window with data.
+        """
         data = self.__stock_service.return_user_data()
         self.table.setRowCount(len(data))
         i = 0
         for stock in data:
-            item = QTableWidgetItem(f"{stock[2]} ({stock[3]})")
+            stockname_item = QTableWidgetItem(f"{stock[2]} ({stock[3]})")
             return_per = ((stock[6] - stock[5]) / stock[5]) * 100
-            item2 = QTableWidgetItem(f"{stock[6]:.2f}")
-            item5 = QTableWidgetItem(f"{return_per:.2f} %")
+            currentprice_item = QTableWidgetItem(f"{stock[6]:.2f}")
+            returnper_item = QTableWidgetItem(f"{return_per:.2f} %")
             return_total = (stock[6] - stock[5])*stock[4]
-            item6 = QTableWidgetItem(f"{return_total:.2f} {stock[7]}")
-            item3 = QTableWidgetItem(str(stock[5]))
-            item4 = QTableWidgetItem(str(stock[4]))
-            for j, item in enumerate([item, item2, item3, item4, item5, item6]):
+            returntotal_item = QTableWidgetItem(f"{return_total:.2f} {stock[7]}")
+            purchaseprice_item = QTableWidgetItem(str(stock[5]))
+            amount_item = QTableWidgetItem(str(stock[4]))
+            for j, item in enumerate([stockname_item, currentprice_item, purchaseprice_item, amount_item, returnper_item, returntotal_item]):
                 item.setBackground(QColor("white"))
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 self.table.setItem(i, j, item)
             i += 1
 
     def refresh_prices(self):
+        """Refreshes the current prices.
+        """
         tickers, _ = self.__stock_service.return_stock_tickers()
         data = self.__stock_service.return_user_data()
         for i, ticker in enumerate(tickers):
             price = self.__stock_service.get_stock_price(ticker)[0]
-            item = QTableWidgetItem(f"{data[i][2]} ({data[i][3]})")
+            stockname_item = QTableWidgetItem(f"{data[i][2]} ({data[i][3]})")
             return_per = ((price - data[i][5]) / data[i][5]) * 100
-            item2 = QTableWidgetItem(f"{price:.2f}")
-            item5 = QTableWidgetItem(f"{return_per:.2f} %")
+            currentprice_item = QTableWidgetItem(f"{price:.2f}")
+            returnper_item = QTableWidgetItem(f"{return_per:.2f} %")
             return_total = (price - data[i][5])*data[i][4]
-            item6 = QTableWidgetItem(f"{return_total:.2f} {data[i][7]}")
-            item3 = QTableWidgetItem(str(data[i][5]))
-            item4 = QTableWidgetItem(str(data[i][4]))
-            for j, item in enumerate([item, item2, item3, item4, item5, item6]):
+            returntotal_item = QTableWidgetItem(f"{return_total:.2f} {data[i][7]}")
+            purchaseprice_item = QTableWidgetItem(str(data[i][5]))
+            amount_item = QTableWidgetItem(str(data[i][4]))
+            for j, item in enumerate([stockname_item, currentprice_item, purchaseprice_item, amount_item, returnper_item, returntotal_item]):
                 item.setBackground(QColor("white"))
                 item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 self.table.setItem(i, j, item)
 
     def set_table_headers(self, table):
+        """Sets the table headers.
+
+        Args:
+            table (QTableWidget): The table of the window.
+        """
         labels = ["Stock", "Current price",
                   "Purchase price", "Amount", "Return-%", "Return"]
         font = QFont()
@@ -147,11 +178,14 @@ class PortfolioWindow(QDialog):
         font.setPointSize(14)
         for i, label in enumerate(labels):
             item = QTableWidgetItem(label)
+            item.setBackground(QColor("white"))
             item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             item.setFont(font)
             table.setHorizontalHeaderItem(i, item)
 
     def add_btns(self):
+        """Adds all the bottom buttons to the window.
+        """
         btn_layout = QHBoxLayout()
         btn_layout.addWidget(self.add_btn)
         btn_layout.addWidget(self.rm_btn)
@@ -162,10 +196,20 @@ class PortfolioWindow(QDialog):
         self.layout.addLayout(btn_layout)
 
     def get_current_price(self, ticker):
+        """Method for accessing the current price of the stock.
+
+        Args:
+            ticker (string): The ticker of the stock.
+
+        Returns:
+            float: The current price of the stock.
+        """
         current = self.__stock_service.get_stock_price(ticker)
         return current
 
     def add_stock(self):
+        """Adds a stock to the users portfolio if possible.
+        """
         user_form = QInputDialog()
         user_form.setStyleSheet("font-size: 18px")
         name, ok1 = QInputDialog.getText(
@@ -184,17 +228,19 @@ class PortfolioWindow(QDialog):
                             name, ticker, amount, buy_price)
                         self.populate_table()
                         if not success:
-                            self.warning_stock()
+                            self.warning("StockError", "Something went wrong when adding the stock!\nCheck that you don't already have the stock in your portfolio\nand that the ticker format is the same as in Yahoo! Finance.")
                     else:
-                        self.warning_input()
+                        self.warning("InputError", "Check that you provide sensible input to all fields.")
                 else:
-                    self.warning_input()
+                    self.warning("InputError", "Check that you provide sensible input to all fields.")
             else:
-                self.warning_input()
+                self.warning("InputError", "Check that you provide sensible input to all fields.")
         else:
-            self.warning_input()
+            self.warning("InputError", "Check that you provide sensible input to all fields.")
 
     def remove_stock(self):
+        """Removes the stock from the user's portfolio if possible.
+        """
         user_form = QInputDialog()
         user_form.setStyleSheet("font-size: 18px")
         ticker, ok = QInputDialog.getText(
@@ -202,45 +248,28 @@ class PortfolioWindow(QDialog):
         if ok:
             success = self.__stock_service.remove_stock(ticker)
             if not success:
-                self.warning_remove()
+                self.warning("StockError", "Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
             else:
                 self.populate_table()
         else:
-            self.warning_input()
+            self.warning("InputError", "Check that you provide sensible input to all fields.")
 
-    def warning_input(self):
-        box = QMessageBox()
-        box.setWindowTitle("InputError")
-        box.setText(
-            "Something went wrong!\nCheck that you provide sensible input to all fields.")
-        box.setIcon(QMessageBox.Critical)
-        box.exec_()
+    def warning(self, label, text):
+        """Shows a warning message for the user.
 
-    def warning_stock(self):
+        Args:
+            label (string): The label of the warning.
+            text (string): The explanation in the warning.
+        """
         box = QMessageBox()
-        box.setWindowTitle("StockError")
-        box.setText(
-            "Something went wrong when adding the stock!\nCheck that you don't already have the stock in your portfolio.")
-        box.setIcon(QMessageBox.Critical)
-        box.exec_()
-
-    def warning_remove(self):
-        box = QMessageBox()
-        box.setWindowTitle("StockError")
-        box.setText(
-            "Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
-        box.setIcon(QMessageBox.Critical)
-        box.exec_()
-
-    def warning_ticker(self):
-        box = QMessageBox()
-        box.setWindowTitle("StockError")
-        box.setText(
-            "Something went wrong when trying to view the stock!\nCheck that you have the stock in your portfolio.")
+        box.setWindowTitle(label)
+        box.setText(text)
         box.setIcon(QMessageBox.Critical)
         box.exec_()
 
     def logout(self):
+        """Functionality for logging out.
+        """
         self.__user.set_username(None)
         self.__user.set_id(None)
         self.__user.set_password(None)
@@ -248,6 +277,8 @@ class PortfolioWindow(QDialog):
         self.main_widget.removeWidget(self)
 
     def stock_info(self):
+        """Functionality for changing to the stock graph window if possible.
+        """
         form = QInputDialog()
         form.setStyleSheet("font-size: 18px")
         ticker, ok = QInputDialog.getText(
@@ -260,6 +291,6 @@ class PortfolioWindow(QDialog):
                 self.main_widget.addWidget(stock_window)
                 self.main_widget.setCurrentIndex(4)
             else:
-                self.warning_ticker()
+                self.warning("StockError", "Something went wrong when trying to view the stock!\nCheck that you have the stock in your portfolio.")
         else:
-            self.warning_input()
+            self.warning("InputError", "Check that you provide sensible input to all fields.")
