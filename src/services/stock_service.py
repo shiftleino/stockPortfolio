@@ -4,7 +4,7 @@ from repositories.stock_repository import StockRepository
 
 
 class StockService:
-    """Class for the application logic and 
+    """Class for the application logic and
     communcation between stock data storages and UI.
     """
 
@@ -60,8 +60,8 @@ class StockService:
             ticker (string): The ticker of the stock.
 
         Returns:
-            integer, string, boolean: The current price, 
-            what currency the price is in 
+            integer, string, boolean: The current price,
+            what currency the price is in
             and whether the method was successful or not.
         """
         try:
@@ -101,8 +101,8 @@ class StockService:
             ticker (string): The ticker of the stock.
 
         Returns:
-            boolean: If the stock was in the database or not. 
-            Return true also when the method is not successful 
+            boolean: If the stock was in the database or not.
+            Return true also when the method is not successful
             as an error message is then shown for the user.
         """
         result, success = self.__repo.get_stock_tickers()
@@ -134,9 +134,9 @@ class StockService:
             ticker (string): The ticker of the stock.
 
         Returns:
-            list, list: Two lists, first one containing the 
+            list, list: Two lists, first one containing the
             timestamps of the data and second one containing
-            the historical stock prices. 
+            the historical stock prices.
         """
         try:
             data = yf.download(tickers=ticker, period="max")
@@ -159,10 +159,14 @@ class StockService:
         if success:
             transformed_data = []
             for stock in data:
-                transformed_data.append((stock[0], stock[1], stock[2], stock[3], stock[4], stock[5], stock[6], stock[7], ((
-                    stock[6] - stock[5]) / stock[5]) * 100, (stock[6] - stock[5])*stock[4]))
-            dtype = [('Id', int), ('Userid', int), ('Stock', "<U100"), ('Ticker', "<U100"), ('Amount', int), (
-                'Purchase Price', float), ('Current Price', float), ('Currency', "<U10"), ('Return-%', float), ('Return', float)]
+                transformed_data.append((stock[0], stock[1], stock[2], stock[3], stock[4],
+                                         stock[5], stock[6], stock[7], ((
+                                             stock[6] - stock[5]) / stock[5]) * 100,
+                                         (stock[6] - stock[5])*stock[4]))
+            dtype = [('Id', int), ('Userid', int), ('Stock', "<U100"), ('Ticker', "<U100"),
+                     ('Amount', int), ('Purchase Price',
+                                       float), ('Current Price', float), ('Currency', "<U10"),
+                     ('Return-%', float), ('Return', float)]
             sorted_data = np.sort(
                 np.array(transformed_data, dtype=dtype), order=method)
             return sorted_data

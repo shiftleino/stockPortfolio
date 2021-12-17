@@ -1,4 +1,4 @@
-from . import db_connection as db
+import database.db_connection as db
 
 
 def drop_tables(conn):

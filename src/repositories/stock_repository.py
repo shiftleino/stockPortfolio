@@ -52,7 +52,7 @@ class StockRepository:
             boolean: If the method was successfully completed.
         """
         try:
-            sql = """INSERT INTO stocks 
+            sql = """INSERT INTO stocks
             (user_id, name, ticker, amount, price, current, currency) 
             VALUES (?,?,?,?,?,?,?);"""
             self.__cursor.execute(sql, data)
