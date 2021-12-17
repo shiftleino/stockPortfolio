@@ -9,6 +9,7 @@ class StockWindow(QDialog):
     Args:
         QDialog (QDialog): Inherits QDialog.
     """
+
     def __init__(self, main_widget, stock_service, ticker):
         """Constructor for the class.
 

@@ -4,9 +4,10 @@ import sqlite3
 class StockRepository:
     """Class for the communication with the database (table stocks).
     """
+
     def __init__(self, connection, user_id):
         """Constructor for the StockRepository class.
-        
+
         Args:
             connection (SQLite3 Connection): The connection for the database.
             user_id (integer): User's id.
@@ -43,10 +44,10 @@ class StockRepository:
 
     def add_stock(self, data):
         """Method for adding a stock to the database.
-        
+
         Args:
             data (list): The data of the stock to be added.
-        
+
         Returns:
             boolean: If the method was successfully completed.
         """

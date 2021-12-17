@@ -141,7 +141,8 @@ class PortfolioWindow(QDialog):
             currentprice_item = QTableWidgetItem(f"{stock[6]:.2f}")
             returnper_item = QTableWidgetItem(f"{return_per:.2f} %")
             return_total = (stock[6] - stock[5])*stock[4]
-            returntotal_item = QTableWidgetItem(f"{return_total:.2f} {stock[7]}")
+            returntotal_item = QTableWidgetItem(
+                f"{return_total:.2f} {stock[7]}")
             purchaseprice_item = QTableWidgetItem(str(stock[5]))
             amount_item = QTableWidgetItem(str(stock[4]))
             for j, item in enumerate([stockname_item, currentprice_item, purchaseprice_item, amount_item, returnper_item, returntotal_item]):
@@ -162,7 +163,8 @@ class PortfolioWindow(QDialog):
             currentprice_item = QTableWidgetItem(f"{price:.2f}")
             returnper_item = QTableWidgetItem(f"{return_per:.2f} %")
             return_total = (price - data[i][5])*data[i][4]
-            returntotal_item = QTableWidgetItem(f"{return_total:.2f} {data[i][7]}")
+            returntotal_item = QTableWidgetItem(
+                f"{return_total:.2f} {data[i][7]}")
             purchaseprice_item = QTableWidgetItem(str(data[i][5]))
             amount_item = QTableWidgetItem(str(data[i][4]))
             for j, item in enumerate([stockname_item, currentprice_item, purchaseprice_item, amount_item, returnper_item, returntotal_item]):
@@ -233,15 +235,20 @@ class PortfolioWindow(QDialog):
                             name, ticker, amount, buy_price)
                         self.populate_table()
                         if not success:
-                            self.warning("StockError", "Something went wrong when adding the stock!\nCheck that you don't already have the stock in your portfolio\nand that the ticker format is the same as in Yahoo! Finance.")
+                            self.warning(
+                                "StockError", "Something went wrong when adding the stock!\nCheck that you don't already have the stock in your portfolio\nand that the ticker format is the same as in Yahoo! Finance.")
                     else:
-                        self.warning("InputError", "Check that you provide sensible input to all fields.")
+                        self.warning(
+                            "InputError", "Check that you provide sensible input to all fields.")
                 else:
-                    self.warning("InputError", "Check that you provide sensible input to all fields.")
+                    self.warning(
+                        "InputError", "Check that you provide sensible input to all fields.")
             else:
-                self.warning("InputError", "Check that you provide sensible input to all fields.")
+                self.warning(
+                    "InputError", "Check that you provide sensible input to all fields.")
         else:
-            self.warning("InputError", "Check that you provide sensible input to all fields.")
+            self.warning(
+                "InputError", "Check that you provide sensible input to all fields.")
 
     def remove_stock(self):
         """Removes the stock from the user's portfolio if possible.
@@ -253,11 +260,13 @@ class PortfolioWindow(QDialog):
         if ok:
             success = self.__stock_service.remove_stock(ticker)
             if not success:
-                self.warning("StockError", "Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
+                self.warning(
+                    "StockError", "Something went wrong when removing the stock!\nCheck that you have the stock in your portfolio.")
             else:
                 self.populate_table()
         else:
-            self.warning("InputError", "Check that you provide sensible input to all fields.")
+            self.warning(
+                "InputError", "Check that you provide sensible input to all fields.")
 
     def warning(self, label, text):
         """Shows a warning message for the user.
@@ -296,16 +305,19 @@ class PortfolioWindow(QDialog):
                 self.main_widget.addWidget(stock_window)
                 self.main_widget.setCurrentIndex(4)
             else:
-                self.warning("StockError", "Something went wrong when trying to view the stock!\nCheck that you have the stock in your portfolio.")
+                self.warning(
+                    "StockError", "Something went wrong when trying to view the stock!\nCheck that you have the stock in your portfolio.")
         else:
-            self.warning("InputError", "Check that you provide sensible input to all fields.")
+            self.warning(
+                "InputError", "Check that you provide sensible input to all fields.")
 
     def sort_table(self):
         """Sorts the table.
         """
         form = QInputDialog()
         form.setStyleSheet("font-size: 18px")
-        method, ok = QInputDialog.getItem(form, "Sort Method", "Choose the sorting parameter", ["Stock", "Current Price", "Purchase Price", "Amount", "Return-%", "Return"], editable=False)
+        method, ok = QInputDialog.getItem(form, "Sort Method", "Choose the sorting parameter", [
+                                          "Stock", "Current Price", "Purchase Price", "Amount", "Return-%", "Return"], editable=False)
         if ok:
             data = self.__stock_service.get_data_sorted(method)
             self.populate_table(data)

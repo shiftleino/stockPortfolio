@@ -4,9 +4,10 @@ import sqlite3
 class UserRepository:
     """Class for communicating with the database (table users).
     """
+
     def __init__(self, connection):
         """Constructor for the class.
-        
+
         Args:
             connection (SQLite3 Connection): Connection for the database.
         """
@@ -34,7 +35,6 @@ class UserRepository:
         self.__connection.commit()
         rows = cursor.fetchall()
         return len(rows) > 0
-
 
     def correct_password(self, username, password):
         """Checks if the given username matches the given password.

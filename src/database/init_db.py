@@ -17,7 +17,7 @@ def drop_tables(conn):
 
 def create_tables(conn):
     """Creates new tables users and stocks in the database.
-    
+
     Args:
         conn (SQLite3 Connection): The connection to the database.
     """

@@ -7,6 +7,7 @@ class StockService:
     """Class for the application logic and 
     communcation between stock data storages and UI.
     """
+
     def __init__(self, user_id, conn):
         """Constructor for the StockService class.
 
@@ -158,8 +159,11 @@ class StockService:
         if success:
             transformed_data = []
             for stock in data:
-                transformed_data.append((stock[0], stock[1], stock[2], stock[3], stock[4], stock[5], stock[6], stock[7], ((stock[6] - stock[5]) / stock[5]) * 100, (stock[6] - stock[5])*stock[4]))
-            dtype = [('Id', int), ('Userid', int), ('Stock', "<U100"), ('Ticker', "<U100"), ('Amount', int), ('Purchase Price', float), ('Current Price', float), ('Currency', "<U10"), ('Return-%', float), ('Return', float)]
-            sorted_data = np.sort(np.array(transformed_data, dtype=dtype), order=method)
+                transformed_data.append((stock[0], stock[1], stock[2], stock[3], stock[4], stock[5], stock[6], stock[7], ((
+                    stock[6] - stock[5]) / stock[5]) * 100, (stock[6] - stock[5])*stock[4]))
+            dtype = [('Id', int), ('Userid', int), ('Stock', "<U100"), ('Ticker', "<U100"), ('Amount', int), (
+                'Purchase Price', float), ('Current Price', float), ('Currency', "<U10"), ('Return-%', float), ('Return', float)]
+            sorted_data = np.sort(
+                np.array(transformed_data, dtype=dtype), order=method)
             return sorted_data
         return [["N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"]]
