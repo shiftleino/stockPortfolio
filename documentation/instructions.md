@@ -9,7 +9,10 @@ Before trying to start the application, you need to download the dependencies us
 ```console 
 poetry install
 ```
-If you don't have Poetry, install it from the following link: [link](https://python-poetry.org/docs/#installation). If you for some reason don't want to install Poetry, you can see the dependencies from the following file: [file](https://github.com/shiftleino/stockPortfolio/blob/main/pyproject.toml).
+If you don't have Poetry, install it from the following link: [link](https://python-poetry.org/docs/#installation). If you for some reason don't want to install Poetry, you can see the dependencies from the following file: [file](https://github.com/shiftleino/stockPortfolio/blob/main/pyproject.toml). Remember also to add Poetry in the PATH:
+```console
+source $HOME/.poetry/env
+```
 
 Now that you have installed the required dependencies, you can start the application using the following command (with Poetry).
 ```console
