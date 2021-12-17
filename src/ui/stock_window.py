@@ -4,7 +4,19 @@ from pyqtgraph import PlotWidget, DateAxisItem
 
 
 class StockWindow(QDialog):
+    """Class for the stock graph window.
+
+    Args:
+        QDialog (QDialog): Inherits QDialog.
+    """
     def __init__(self, main_widget, stock_service, ticker):
+        """Constructor for the class.
+
+        Args:
+            main_widget (QStackedWidget): The main widget that contains all the windows.
+            stock_service (StockService): Service for getting stock data.
+            ticker (string): The ticker of the stock.
+        """
         super().__init__()
         self.__main_widget = main_widget
         self.__stock_service = stock_service
@@ -12,7 +24,6 @@ class StockWindow(QDialog):
         self.data = self.__stock_service.get_data_of_stock(self.__ticker)
         self.layout = QVBoxLayout()
 
-        # SET BACKGROUND FOR THE WINDOW
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet("background-color: #1F2833")
 
@@ -28,6 +39,11 @@ class StockWindow(QDialog):
         self.setLayout(self.layout)
 
     def add_label(self, layout):
+        """Adds the label to the window.
+
+        Args:
+            layout (QHBoxLayout): The top header layout.
+        """
         header = QLabel(self.data[2])
         header.setStyleSheet(
             "color: #66FCF1; font-weight: bold; font-size: 64px")
@@ -35,6 +51,14 @@ class StockWindow(QDialog):
         layout.addStretch()
 
     def create_btn(self, text):
+        """Method for creating buttons.
+
+        Args:
+            text (string): The text in the button.
+
+        Returns:
+            QPushButton: The created button.
+        """
         btn = QPushButton(text)
         btn.setStyleSheet(
             "QPushButton {background-color: #66FCF1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10} QPushButton::hover {background-color: #33C9C1; border-radius: 10px; font-weight: bold; font-size: 18px; color: #0B0C10}")
@@ -42,6 +66,8 @@ class StockWindow(QDialog):
         return btn
 
     def add_graph(self):
+        """Method for adding the graph into the window.
+        """
         graph = PlotWidget(axisItems={'bottom': DateAxisItem()})
         x, y = self.__stock_service.get_historical_data(self.__ticker)
 
@@ -51,5 +77,7 @@ class StockWindow(QDialog):
         self.layout.addWidget(graph)
 
     def return_portfolio_window(self):
+        """Method for returning to the portfolio window.
+        """
         self.__main_widget.setCurrentIndex(3)
         self.__main_widget.removeWidget(self)
