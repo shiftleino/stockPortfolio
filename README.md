@@ -10,8 +10,9 @@ Lisää tietoa sovelluksesta voi löytää Dokumentaatio-kohdan sisältämistä 
 ## Dokumentaatio
 [Instructions in English](./documentation/instructions.md)<br>
 [Työtunnit](./documentation/tuntikirjanpito.md)<br>
-[Vaatimusmäärittely](./documentation/vaatimusmaarittely.md)</br>
-[Arkkitehtuurikuvaus](./documentation/arkkitehtuuri.md)
+[Vaatimusmäärittely](./documentation/vaatimusmaarittely.md)<br>
+[Arkkitehtuurikuvaus](./documentation/arkkitehtuuri.md)<br>
+[Testausdokumentti](./documentation/testausdokumentti.md)<br>
 
 ## Python-versio
 Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on haittaa, vanhempien versioiden kanssa saattaa tulla ongelmia.

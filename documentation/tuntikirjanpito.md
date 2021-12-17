@@ -72,8 +72,13 @@
         <td>Docstring ja dokumentaatio.</td>
     </tr>
     <tr>
+        <td>17.12.</td>
+        <td>8</td>
+        <td>Docstringien tekeminen, testauksen laajentaminen ja taulukon sorttaamis -toiminnallisuuden tekeminen.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>56</b></td>
+        <td><b>64</b></td>
         <td></td>
     </tr>
 </table>
