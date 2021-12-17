@@ -1,5 +1,6 @@
 from services.stock_service import StockService
 from .stock_window import StockWindow
+from .portfolio_info_winfow import PortfolioInfoWindow
 from PyQt5.QtGui import QFont, QColor
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QTableWidget, QTableWidgetItem, QInputDialog, QMessageBox
@@ -52,6 +53,7 @@ class PortfolioWindow(QDialog):
         self.rm_btn.clicked.connect(self.remove_stock)
         self.logout_btn.clicked.connect(self.logout)
         self.info_btn.clicked.connect(self.stock_info)
+        self.portfolio_btn.clicked.connect(self.portfolio_info)
 
     def set_labels(self):
         """Method for setting the labels for the window.
@@ -294,3 +296,10 @@ class PortfolioWindow(QDialog):
                 self.warning("StockError", "Something went wrong when trying to view the stock!\nCheck that you have the stock in your portfolio.")
         else:
             self.warning("InputError", "Check that you provide sensible input to all fields.")
+
+    def portfolio_info(self):
+        """Changes to the portfolio information window.
+        """
+        portfolio_info_window = PortfolioInfoWindow(self.main_widget, self.__stock_service)
+        self.main_widget.addWidget(portfolio_info_window)
+        self.main_widget.setCurrentIndex(4)
