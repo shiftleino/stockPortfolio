@@ -1,4 +1,5 @@
 import yfinance as yf
+import numpy as np
 from repositories.stock_repository import StockRepository
 
 
@@ -143,3 +144,22 @@ class StockService:
             return [i.timestamp() for i in x_values], y_values
         except:
             return [], []
+
+    def get_data_sorted(self, method):
+        """Returns the data sorted by the chosen method.
+
+        Args:
+            method (string): The parameter to order the data.
+
+        Returns:
+            list: The sorted data (list of lists).
+        """
+        data, success = self.__repo.get_user_data()
+        if success:
+            transformed_data = []
+            for stock in data:
+                transformed_data.append((stock[0], stock[1], stock[2], stock[3], stock[4], stock[5], stock[6], stock[7], ((stock[6] - stock[5]) / stock[5]) * 100, (stock[6] - stock[5])*stock[4]))
+            dtype = [('Id', int), ('Userid', int), ('Stock', "<U100"), ('Ticker', "<U100"), ('Amount', int), ('Purchase Price', float), ('Current Price', float), ('Currency', "<U10"), ('Return-%', float), ('Return', float)]
+            sorted_data = np.sort(np.array(transformed_data, dtype=dtype), order=method)
+            return sorted_data
+        return [["N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"]]

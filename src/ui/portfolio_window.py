@@ -1,6 +1,5 @@
 from services.stock_service import StockService
 from .stock_window import StockWindow
-from .portfolio_info_winfow import PortfolioInfoWindow
 from PyQt5.QtGui import QFont, QColor
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QTableWidget, QTableWidgetItem, QInputDialog, QMessageBox
@@ -39,11 +38,11 @@ class PortfolioWindow(QDialog):
         self.table = self.set_table()
         self.populate_table()
 
-        self.add_btn = self.create_btn("Add Stock", 185, 50)
-        self.rm_btn = self.create_btn("Remove Stock", 185, 50)
-        self.rf_btn = self.create_btn("Refresh Prices", 185, 50)
+        self.add_btn = self.create_btn("Add Stock", 215, 50)
+        self.rm_btn = self.create_btn("Remove Stock", 215, 50)
+        self.rf_btn = self.create_btn("Refresh Prices", 215, 50)
+        self.sort_btn = self.create_btn("Sort Table", 215, 50)
         self.info_btn = self.create_btn("View Graph of a Stock", 280, 50)
-        self.portfolio_btn = self.create_btn("Portfolio Information", 280, 50)
         self.add_btns()
 
         self.setLayout(self.layout)
@@ -53,7 +52,7 @@ class PortfolioWindow(QDialog):
         self.rm_btn.clicked.connect(self.remove_stock)
         self.logout_btn.clicked.connect(self.logout)
         self.info_btn.clicked.connect(self.stock_info)
-        self.portfolio_btn.clicked.connect(self.portfolio_info)
+        self.sort_btn.clicked.connect(self.sort_table)
 
     def set_labels(self):
         """Method for setting the labels for the window.
@@ -126,10 +125,14 @@ class PortfolioWindow(QDialog):
         self.layout.addWidget(table)
         return table
 
-    def populate_table(self):
+    def populate_table(self, data=None):
         """Populates the table of the window with data.
+
+        Args:
+            data (list, optional): The data to populate the table with if given. Defaults to None.
         """
-        data = self.__stock_service.return_user_data()
+        if data is None:
+            data = self.__stock_service.return_user_data()
         self.table.setRowCount(len(data))
         i = 0
         for stock in data:
@@ -192,8 +195,8 @@ class PortfolioWindow(QDialog):
         btn_layout.addWidget(self.add_btn)
         btn_layout.addWidget(self.rm_btn)
         btn_layout.addWidget(self.rf_btn)
+        btn_layout.addWidget(self.sort_btn)
         btn_layout.addWidget(self.info_btn)
-        btn_layout.addWidget(self.portfolio_btn)
         btn_layout.addStretch()
         self.layout.addLayout(btn_layout)
 
@@ -297,9 +300,14 @@ class PortfolioWindow(QDialog):
         else:
             self.warning("InputError", "Check that you provide sensible input to all fields.")
 
-    def portfolio_info(self):
-        """Changes to the portfolio information window.
+    def sort_table(self):
+        """Sorts the table.
         """
-        portfolio_info_window = PortfolioInfoWindow(self.main_widget, self.__stock_service)
-        self.main_widget.addWidget(portfolio_info_window)
-        self.main_widget.setCurrentIndex(4)
+        form = QInputDialog()
+        form.setStyleSheet("font-size: 18px")
+        method, ok = QInputDialog.getItem(form, "Sort Method", "Choose the sorting parameter", ["Stock", "Current Price", "Purchase Price", "Amount", "Return-%", "Return"], editable=False)
+        if ok:
+            data = self.__stock_service.get_data_sorted(method)
+            self.populate_table(data)
+        else:
+            self.warning("InputError", "Something went wrong! Try again.")
