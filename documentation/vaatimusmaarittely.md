@@ -6,7 +6,7 @@ Sovellus on graafisella käyttöliittymällä toteutettu osakeportfolion hallino
 ## Sovelluksen käyttäjät
 Sovelluksella on ainoastaan yksi käyttäjärooli, normaali käyttäjä. Pääkäyttäjäroolia ei sovelluksessa ole.
 
-## Suunnitellut toiminnallisuudet
+## Toiminnallisuudet
 
 ### Perusversio
 - Käyttäjä voi rekisteröityä käyttäjäksi ja siten luoda oman tilin
