@@ -26,7 +26,7 @@ class TestUserService(unittest.TestCase):
         username = "username"
         password = "1234"
         self.service.add_user(username, password)
-        user_id  = self.service.get_id(username)
+        user_id = self.service.get_id(username)
         self.assertEqual(user_id, 1)
 
     def test_user(self):

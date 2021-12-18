@@ -1,6 +1,6 @@
 from ui import gui
 from database import db_connection
-from services.user_service import UserService 
+from services.user_service import UserService
 from services.stock_service import StockService
 
 

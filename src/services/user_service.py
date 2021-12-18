@@ -5,6 +5,7 @@ from entities.user import User
 class UserService:
     """Class for the application logic of the user.
     """
+
     def __init__(self, conn):
         """Constructor for the class.
 
@@ -27,7 +28,7 @@ class UserService:
         """
         result = self.__repo.add_user(username, password)
         return result
-    
+
     def login(self, username, password):
         """Logs in the user if username and password correct.
 
@@ -39,10 +40,10 @@ class UserService:
             boolean: If the login was successful or not.
         """
         if self.__repo.check_username_exists(username) and self.__repo.correct_password(username, password):
-            id = self.__repo.get_user_id(username)
+            user_id = self.__repo.get_user_id(username)
             self.__user.set_username(username)
             self.__user.set_password(password)
-            self.__user.set_id(id)
+            self.__user.set_id(user_id)
             return True
         return False
 
@@ -55,7 +56,7 @@ class UserService:
         Returns:
             integer: The user id of the user.
         """
-        user_id  = self.__repo.get_user_id(username)
+        user_id = self.__repo.get_user_id(username)
         return user_id
 
     def set_username(self, username):
@@ -73,7 +74,7 @@ class UserService:
             password (string): The given password.
         """
         self.__user.set_password(password)
-    
+
     def set_id(self, user_id):
         """Sets the id to given id.
 

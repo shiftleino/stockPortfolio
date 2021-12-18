@@ -86,4 +86,3 @@ class UserRepository:
             return True
         except sqlite3.Error:
             return False
-
