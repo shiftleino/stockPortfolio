@@ -10,17 +10,17 @@ class LoginWindow(QDialog):
         QDialog: Inherits QDialog
     """
 
-    def __init__(self, main_widget, user_repo, user):
+    def __init__(self, main_widget, user_service, stock_service):
         """Constructor for the Login Window class.
 
         Args:
             main_widget (QStackedWidget): The main widget that contains all the windows.
-            user_repo (UserRepository): The UserRepository class for communicating with the database.
-            user (User): User class for the user.
+            user_service (UserService): The UserService class for the application logic of the user.
+            stock_service (StockService): The StockService class for the application logic of the portfolio.
         """
         super().__init__()
-        self.__user_repo = user_repo
-        self.__user = user
+        self.__user_service = user_service
+        self.__stock_service = stock_service
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
         self.set_labels()
@@ -145,16 +145,15 @@ class LoginWindow(QDialog):
         username = self.user_name_field.text()
         password = self.password_field.text()
         if len(username) > 0 and len(password) > 0:
-            if self.__user_repo.check_username_exists(username) and self.__user_repo.correct_password(username, password):
-                id = self.__user_repo.get_user_id(username)
-                self.__user.set_username(username)
-                self.__user.set_password(password)
-                self.__user.set_id(id)
+            successful = self.__user_service.login(username, password)
+            if successful:
                 self.user_name_field.clear()
                 self.password_field.clear()
 
+                new_id = self.__user_service.get_id(username)
+                self.__stock_service.set_user_id(new_id)
                 portfolio = PortfolioWindow(
-                    self.main_widget, self.__user_repo, self.__user)
+                    self.main_widget, self.__user_service, self.__stock_service)
                 self.main_widget.addWidget(portfolio)
                 self.error.setText("")
                 self.main_widget.setCurrentIndex(3)

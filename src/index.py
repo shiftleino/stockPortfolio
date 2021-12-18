@@ -1,14 +1,14 @@
 from ui import gui
-from repositories.user_repository import UserRepository
 from database import db_connection
-from entities.user import User
+from services.user_service import UserService 
+from services.stock_service import StockService
 
 
 def main():
     conn = db_connection.get_connection()
-    user_repo = UserRepository(conn)
-    user = User()
-    gui.start_gui(user_repo, user)
+    user_service = UserService(conn)
+    stock_service = StockService(conn)
+    gui.start_gui(user_service, stock_service)
 
 
 if __name__ == "__main__":

@@ -9,15 +9,15 @@ class SignupWindow(QDialog):
         QDialog: Inherits QDialog
     """
 
-    def __init__(self, main_widget, repo):
+    def __init__(self, main_widget, service):
         """Constructor for the class.
 
         Args:
             main_widget (QStackedWidget): The main widget that contains all the windows.
-            repo (UserRepository): The class for communicating with the database.
+            service (UserService): The class for the application logic of the user.
         """
         super().__init__()
-        self.__user_repo = repo
+        self.__user_service = service
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
         self.set_labels()
@@ -143,7 +143,7 @@ class SignupWindow(QDialog):
         username = self.user_name_field.text()
         password = self.password_field.text()
         if len(username) > 0 and len(password) > 0:
-            successful = self.__user_repo.add_user(username, password)
+            successful = self.__user_service.add_user(username, password)
             if successful:
                 self.user_name_field.clear()
                 self.password_field.clear()

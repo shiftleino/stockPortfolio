@@ -12,19 +12,17 @@ class PortfolioWindow(QDialog):
         QDialog (QDialog): Inherits class QDialog.
     """
 
-    def __init__(self, main_widget, repo, user):
+    def __init__(self, main_widget, user_service, stock_service):
         """Constructor for the PortfolioWindow class.
 
         Args:
             main_widget (QStackedWidget): The main widget that contains all the windows.
-            repo (UserRepository): The repository for the user.
-            user (User): The user object.
+            user_service (UserService): The service for the user.
+            stock_service (StockService): The service for the portfolio.
         """
         super().__init__()
-        self.__user = user
-        self.__user_repo = repo
-        self.__stock_service = StockService(
-            self.__user.return_id(), self.__user_repo.return_conn())
+        self.__user_service = user_service
+        self.__stock_service = stock_service
         self.main_widget = main_widget
         self.layout = QVBoxLayout()
 
@@ -65,7 +63,7 @@ class PortfolioWindow(QDialog):
         label_layout.addWidget(header)
         label_layout.addStretch()
 
-        user_name = self.__user.return_username()
+        user_name = self.__user_service.return_username()
         text = f"You are logged in as user:\n{user_name}"
         user_header = QLabel(text)
         user_header.setStyleSheet(
@@ -290,9 +288,10 @@ class PortfolioWindow(QDialog):
     def logout(self):
         """Functionality for logging out.
         """
-        self.__user.set_username(None)
-        self.__user.set_id(None)
-        self.__user.set_password(None)
+        self.__stock_service.set_user_id(None)
+        self.__user_service.set_username(None)
+        self.__user_service.set_id(None)
+        self.__user_service.set_password(None)
         self.main_widget.setCurrentIndex(0)
         self.main_widget.removeWidget(self)
 

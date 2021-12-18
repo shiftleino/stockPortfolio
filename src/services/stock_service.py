@@ -8,7 +8,7 @@ class StockService:
     communcation between stock data storages and UI.
     """
 
-    def __init__(self, user_id, conn):
+    def __init__(self, conn, user_id=None):
         """Constructor for the StockService class.
 
         Args:
@@ -17,6 +17,15 @@ class StockService:
         """
         self.__user_id = user_id
         self.__conn = conn
+        self.__repo = StockRepository(self.__conn, self.__user_id)
+
+    def set_user_id(self, user_id):
+        """Method for changing the user's id and the repository.
+
+        Args:
+            user_id (integer): The given id.
+        """
+        self.__user_id = user_id
         self.__repo = StockRepository(self.__conn, self.__user_id)
 
     def return_user_data(self):
