@@ -12,8 +12,8 @@ class StockService:
         """Constructor for the StockService class.
 
         Args:
-            user_id (integer): The id of the user.
             conn (SQLite3 Connection): Connection for the database.
+            user_id (integer): The id of the user. Defaults to None.
         """
         self.__user_id = user_id
         self.__conn = conn
