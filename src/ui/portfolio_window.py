@@ -233,7 +233,7 @@ class PortfolioWindow(QDialog):
                     user_form, "Add new stock", "Enter the amount:", min=1)
                 if ok3:
                     buy_price, ok4 = QInputDialog.getDouble(
-                        user_form, "Add new stock", "Enter the price you bought the stock:", min=0.0001)
+                        user_form, "Add new stock", "Enter the price you bought the stock:", min=0.01)
                     if ok4:
                         success = self.__stock_service.add_stock(
                             name, ticker, amount, buy_price)
