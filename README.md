@@ -22,7 +22,7 @@ Sovellus on suunniteltu Python-versiolle 3.8. Uudemmista versioista tuskin on ha
 - Osakkeiden lyhenteet täytyy olla samassa muodossa kuin YAHOO! Finance -nettisivulla.
 
 ## Julkaisut
-[Viimeisin julkaisu](https://github.com/shiftleino/stockPortfolio/releases/tag/viikko6)<br>
+[Viimeisin julkaisu](https://github.com/shiftleino/stockPortfolio/releases)<br>
 
 ## Käynnistys
 Helpoin tapa käyttää sovellusta on asentaa ensiksi Poetry ([linkki](https://python-poetry.org/docs/#installation)), kloonata projekti itselleen ja tämän jälkeen seurata alla olevia ohjeita.<br>
