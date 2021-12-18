@@ -162,7 +162,7 @@ class StockService:
             method (string): The parameter to order the data.
 
         Returns:
-            list: The sorted data (list of lists).
+            array: The sorted data (array of arrays).
         """
         data, success = self.__repo.get_user_data()
         if success:
