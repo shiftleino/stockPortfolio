@@ -76,9 +76,14 @@
         <td>8</td>
         <td>Docstringien tekeminen, testauksen laajentaminen ja taulukon sorttaamis -toiminnallisuuden tekeminen.</td>
     </tr>
+     <tr>
+        <td>18.12.</td>
+        <td>6</td>
+        <td>Ohjelman rakenteen muuttaminen, dokumentaation valmistuminen ja testaamisen lisääminen.</td>
+    </tr>
     <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>64</b></td>
+        <td><b>70</b></td>
         <td></td>
     </tr>
 </table>

@@ -9,7 +9,7 @@ class TestStockService(unittest.TestCase):
         self.conn = get_connection()
         initialize_db()
         self.user_id = 1
-        self.service = StockService(self.user_id, self.conn)
+        self.service = StockService(self.conn, self.user_id)
 
     def test_return_data_empty(self):
         result = self.service.return_user_data()
@@ -22,6 +22,9 @@ class TestStockService(unittest.TestCase):
         data = self.service.return_user_data()
         self.assertEqual(len(data), 2)
         self.assertEqual(data[0][3], "TSLA")
+        self.service.set_user_id(2)
+        data = self.service.return_user_data()
+        self.assertEqual(len(data), 0)
 
     def test_add_wrong_stock(self):
         result1 = self.service.add_stock("NotRealStock", "1234", 30, 300)

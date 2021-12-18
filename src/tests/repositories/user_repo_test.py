@@ -17,11 +17,6 @@ class TestUserRepository(unittest.TestCase):
         self.assertEqual(second, False)
         self.conn.close()
 
-    def test_return_conn(self):
-        conn = self.repo.return_conn()
-        self.assertEqual(conn, self.conn)
-        self.conn.close()
-
     def test_get_user_id(self):
         self.repo.add_user("username1", "1234")
         id_ = self.repo.get_user_id("username1")

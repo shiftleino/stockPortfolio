@@ -87,10 +87,3 @@ class UserRepository:
         except sqlite3.Error:
             return False
 
-    def return_conn(self):
-        """Returns the connection for the database.
-
-        Returns:
-            SQLite3 Connection: The connection for the database.
-        """
-        return self.__connection

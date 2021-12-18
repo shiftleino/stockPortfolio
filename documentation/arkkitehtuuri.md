@@ -15,13 +15,14 @@ Alla oleva kaavio hahmottaa sovelluksen pakkausrakennetta paremmin.
 Sovelluksen graafinen käyttöliittymä voidaan jakaa viiteen eri ikkunaan (aloitus-, kirjautumis-, käyttäjän luonti-, portfolio- ja kuvaajaikkuna), joista jokaisesta vastaa oma QDialogin perivä luokka. Ikkunat on liitetty yhteen QStackedWidget-luokalla, joka luodaan tiedostossa gui.py. Tämän luokan avulla pystytään vaihtamaan sovelluksen näyttämää ikkunaa saumattomasti. 
 
 Alla oleva kaavio hahmottaa käyttöliittymäikkunoiden välistä toimintaa.
+![Käyttöliittymä](../images/kayttoliittyma.png)
 
 ## Sovelluslogiikka
 Alla oleva luokkakaavio havainnollistaa sovelluksen luokkien välisiä suhteita.
 
 ![Class diagram](../images/luokkakaavio.png)
 
-Käytännössä kuitenkin sovelluksen logiikka etenee pitkälti graafisen käyttöliittymän ja siten sovelluksen käyttäjän johdolla eli sovellus toimii pitkälti käyttäjän työkaluna.
+Luokat StockService ja UserService vastaavat sovelluksen logiikasta, ja UserRepository sekä StockRepository taas tiedon tallentamisesta ja tietokannan kanssa kommunikoinnista. Luokka User taas kuvaa tämän hetkistä käyttäjää, joka on kirjautuneena sisään. Käytännössä kuitenkin sovelluksen logiikka etenee pitkälti graafisen käyttöliittymän ja siten sovelluksen käyttäjän johdolla eli sovellus toimii pitkälti käyttäjän työkaluna.
 
 ## Tiedon tallennus
 Sovelluksen tiedon tallennuksesta vastaavat repositories-hakemiston sisältämien tiedostojen luokat UserRepository ja StockRepository. Näistä UserRepository vastaa käyttäjätietojen tallentamisesta SQLite-tietokannan tauluun users ja StockRepository osakkeisiin liittyvien tietojen tallentamisesta saman tietokannan tauluun stocks.
@@ -31,5 +32,4 @@ Alla olevassa sekvenssikaaviossa on esitetty käyttäjän sisäänkirjautumisen 
 
 ![Sequence diagram](../images/sekvenssikaavio_login.png)
 
-## Arkkitehtuurin heikkoudet
-Tulossa pian...
+Sovelluksen muut toiminnallisuudet noudattelevat pitkälti samaa kaavaa (gui -> service -> repository). 
