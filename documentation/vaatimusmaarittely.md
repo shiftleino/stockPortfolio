@@ -9,20 +9,29 @@ Sovelluksella on ainoastaan yksi käyttäjärooli, normaali käyttäjä. Pääk�
 ## Suunnitellut toiminnallisuudet
 
 ### Perusversio
-- Käyttäjä voi rekisteröityä käyttäjäksi ja siten luoda tilin - tehty vko3
-- Käyttäjä voi kirjautua sisään sovellukseen - tehty vko3
-- Käyttäjä voi kirjautua ulos sovelluksesta - tehty vko4
-- Käyttäjä voi lisätä osakkeita portfolioonsa - tehty vko4
-- Käyttäjä voi poistaa osakkeita portfoliosta - tehty vko4
-- Käyttäjä voi tarkastella osakkeidensa päivittäistä kurssia - tehty vko5
-- Käyttäjä voi tarkastella osakkeiden historiallista hintakehitystä kuvaajasta - tehty vko6
+- Käyttäjä voi rekisteröityä käyttäjäksi ja siten luoda oman tilin
+    - Käyttäjätunnus uniikki
+- Käyttäjä voi kirjautua sisään sovellukseen omalle tililleen
+    - Jos syötettyä käyttäjää ei ole olemassa tai salasana on virheellinen, ilmoittaa sovellus tästä virhetekstillä, joka on molemmissa tapauksissa sama.
+- Käyttäjä voi kirjautua ulos sovelluksesta
+    - Tällöin sovellus palauttaa käyttäjän takaisin aloitusikkunaan
+- Käyttäjä voi lisätä osakkeita portfolioonsa
+    - Ticker täytyy olla samassa muodossa kuin YAHOO! Financessä. 
+- Käyttäjä voi poistaa osakkeita omasta portfoliosta
+    - Jos osaketta ei ole portfoliossa, mitään ei tapahdu
+- Käyttäjä voi tarkastella taulukosta osakkeidensa ostohintaa, tuottoa ja päivittäistä kurssia 
+    - Päivittäinen kurssi ei päivity automaattisesti, vaan se täytyy erikseen päivittää sille osoitetulla napilla
+- Käyttäjä pystyy järjestää taulukkoa eri sarakkeiden avulla. 
+- Käyttäjä voi tarkastella osakkeiden historiallista hintakehitystä kuvaajasta
+    - Kuvaaja on interaktiivinen ja sitä pystyy esimerkiksi zoomata.
+    - Käyttäjä ei pysty tarkastella esimerkiksi muiden käyttäjien osakkeiden historiallista hintakehitystä.
 
 ### Jatkokehitysideat
-- Käyttäjä näkee osakkeen ostohinnan, prosentuaalisen tuoton ja rahamääräisen tuoton. - tehty vko4 ja vko5
 - Muita rahoitusalan laskuja osakkeisiin liittyen: beta, alfa jne.
 - Koko portfolioon liittyvät kuvaajat: kynttiläkaavio, Pareto-diagrammi jne.
 
 ## Käyttöliittymäluonnos (tekstinä)
-- Sovellus aukeaa kirjautumisikkunaan, josta voi myös vaihtaa rekisteröitymisikkunaan. Nämä ikkunat ovat siis linkitetty toisiinsa napilla.
-- Kirjautumisikkunassa käyttäjä voi kirjautua sisään ja siten päästä tarkastelemaan omaa salkkuaan. Avautuvalla ikkunalla käyttäjä näkee listan salkkunsa osakkeista ja niiden sen hetkisestä kurssista (päivän tarkkuudella). Lisäksi tähän ikkunaan voidaan lisää jokaiselle osakkeelle muutakin dataa, kuten esimerkiksi ostokurssi ja salkussa olevien osakkeiden lukumäärä.
-- Tässä ikkunassa käyttäjä voi painamalla jotain osaketta siirtyä uuteen ikkunaan, joka näyttää osakkeen historiallisen hinnan kuvaajan. Nappia painamalla käyttäjä pääsee takaisin edelliseen pääikkunaan.
+- Sovellus aukeaa aloitusikkunaa, josta käyttäjä voi siirtyä kirjautumis- ja rekisteröitymisikkunoihin.
+- Kirjautumisikkunassa käyttäjä voi kirjautua sisään ja siten päästä tarkastelemaan omaa salkkuaan. Avautuvalla ikkunalla käyttäjä näkee taulukon salkkunsa osakkeista ja esimerkiksi niiden sen hetkisestä kurssista (päivittämällä napista).
+- Tässä ikkunassa käyttäjä voi painamalla alla olevaa nappia siirtyä uuteen ikkunaan, joka näyttää osakkeen historiallisen hinnan kuvaajan. Nappia painamalla käyttäjä pääsee takaisin edelliseen pääikkunaan.
+- Kirjautumalla ulos pääikkunassa käyttäjä pääsee takaisin aloitusikkunaan.
