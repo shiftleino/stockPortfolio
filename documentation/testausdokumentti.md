@@ -14,11 +14,11 @@ Sovelluksen testauksen haarautumakattavuus (poislukien käyttöliittymästä vas
 ![Testikattavuus](../images/testikattavuus.png)
 
 ## Virheet ohjelmassa
-Ohjelma saattaa joissain tilanteissa käyttäessä Linux-järjestelmää tulostaa terminaaliin seuraavan virheviestin: 
+Ohjelma saattaa joissain tilanteissa käyttäessä Linux-järjestelmää tulostaa terminaaliin seuraavanlaisen virheviestin:<br>
 qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow), sequence: 3798, resource id: 12598715, major code: 40 (TranslateCoords), minor code: 0
 
 Tämä virheviesti ei suoranaisesti johdu sovelluksesta, vaan se on todennäköisesti Qt-ohjelmistoon jäänyt bugi, joka tapahtuu käyttäessä Qt:n Messageboxeja tietyillä järjestelmillä.
 
-Lisää tietoa:
+Lisää tietoa:<br>
 https://bugreports.qt.io/browse/QTBUG-87141<br>
 https://bugreports.qt.io/browse/QTBUG-56893
