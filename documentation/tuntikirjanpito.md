@@ -82,8 +82,13 @@
         <td>Ohjelman rakenteen muuttaminen, dokumentaation valmistuminen ja testaamisen lisääminen.</td>
     </tr>
     <tr>
+        <td>20.12.</td>
+        <td>1</td>
+        <td>Virheiden korjausta ja dokumentaatioon lisääminen bugista Qt-ohjelmassa.</td>
+    </tr>
+    <tr>
         <td><b>Yhteensä</b></td>
-        <td><b>70</b></td>
+        <td><b>71</b></td>
         <td></td>
     </tr>
 </table>
