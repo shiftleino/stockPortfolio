@@ -12,3 +12,13 @@ Testiluokka TestUserService taas testaa UserService luokan toimintaa, joka vasta
 Sovelluksen testauksen haarautumakattavuus (poislukien käyttöliittymästä vastaava koodi) on 92%. Testauksen ulkopuolelle on jäänyt joitain haaraumia StockService ja StockRepository luokissa. Nämä haaraumat ovat pitkälti sqlite3 ja yfinance kirjastojen poikkeustapauksista vastaavia haaraumia, joita on käytännössä mahdotonta testata automatisoiduilla testeillä, sillä niiden tapahtuminen ei esimerkiksi riipu käyttäjän syötteestä. Myös config-tiedostossa ja init_db-tiedostossa on muutama rivi testaamatta, joita ei myöskään ole tarkoituksenmukaista edes testata automatisoiduilla testeillä.
 
 ![Testikattavuus](../images/testikattavuus.png)
+
+## Virheet ohjelmassa
+Ohjelma saattaa joissain tilanteissa käyttäessä Linux-järjestelmää tulostaa terminaaliin seuraavan virheviestin: 
+qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow), sequence: 3798, resource id: 12598715, major code: 40 (TranslateCoords), minor code: 0
+
+Tämä virheviesti ei suoranaisesti johdu sovelluksesta, vaan se on todennäköisesti Qt-ohjelmistoon jäänyt bugi, joka tapahtuu käyttäessä Qt:n Messageboxeja tietyillä järjestelmillä.
+
+Lisää tietoa:
+https://bugreports.qt.io/browse/QTBUG-87141<br>
+https://bugreports.qt.io/browse/QTBUG-56893
